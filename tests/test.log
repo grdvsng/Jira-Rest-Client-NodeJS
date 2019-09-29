@@ -1,0 +1,15 @@
+TimeStamp: Mon Sep 30 2019 01:24:28 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	admin, session created.
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 01:24:40 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 401.
+Response: {"errorMessages":["Ошибка доступа"],"errors":{}}
+---------------------------------------------------------
