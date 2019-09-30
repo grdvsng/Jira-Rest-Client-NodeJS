@@ -77,16 +77,16 @@ class JiraClient extends _Request {
         {
             path: 'rest/api/2/issue/' + isueID
         },
-            resp    = await this._request(options, "get");
+            resp    = await this._request(options, "get", false);
 
         return resp;
     }
 
-    async _request(options, method="get", onCritical=null)
+    async _request(options, method="get", onCritical=undefined)
     {
         let response = await this.request(options, method);
 
-        if (response.code !== 200 && onCritical == null) onCritical(result);
+        if (response.code !== 200 && onCritical == undefined) onCritical(response);
 
         return response;
     } 
@@ -112,7 +112,7 @@ class JiraClient extends _Request {
         }
         else if (result.status !== 200) 
         {
-            this.onError(0, 0, result.status, result.data);
+            this.onError(0, 0, result.status, JSON.stringify(result.data));
         }  
         else if (result.errors) 
         {
@@ -122,7 +122,7 @@ class JiraClient extends _Request {
             this.options['headers']['cookie'] = this.session.name + '=' +  this.session.value;
         }
 
-        await this.search("not(status=Closed)", 0, 1, (result) => {self.onError(2, 2, result.status, result.data);});
+        //await this.search("not(status=Closed)", 0, 1, (result) => {self.onError(2, 2, result.status, result.data);});
         await this.onAuth(this.auth.data.username, this.auth.type);
     }
 }

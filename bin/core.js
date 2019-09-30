@@ -131,9 +131,22 @@ class _Request extends EventsHandler
 		}, function(a) {return a != undefined});
 	}
  	
- 	GET(options)
+ 	async GET(options)
  	{
+ 		let self = this;
+
  		this.connectDefaultAttsOnRequest(options);
+
+ 		let req = await this.http.request(options, (response) => 
+ 		{
+ 			self.responseParser.apply(self, [response]);
+ 		});
+
+    	req.end();
+
+    	let resp = await this.waitingResponse();
+    	
+    	return new Promise((resolve) => resolve(resp));
  	}
 
  	connectDefaultAttsOnRequest(options)

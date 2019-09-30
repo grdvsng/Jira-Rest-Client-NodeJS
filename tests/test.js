@@ -23,4 +23,4 @@ let params =
 
 let App = new JiraClient(params, auth);
 
-//App.getIsue('Test-1');
+setTimeout(async () => console.log(await App.getIsue('Test-1')), 3000);

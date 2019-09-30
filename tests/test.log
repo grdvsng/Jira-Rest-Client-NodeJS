@@ -289,3 +289,120 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:10:32 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 401.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:10:50 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 401.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:11:20 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 401.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:12:03 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:12:16 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:12:37 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:13:21 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: [object Object]
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:15:39 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: {"errorMessages":["Вход запрещён"],"errors":{}}
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:15:59 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Authorization Errors
+Desription: 
+	Application will close, server response 403.
+Response: {"errorMessages":["Вход запрещён"],"errors":{}}
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:17:05 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:17:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:19:00 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:20:03 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Sep 30 2019 14:20:29 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
