@@ -22,3 +22,5 @@ let params =
 	};
 
 let App = new JiraClient(params, auth);
+
+//App.getIsue('Test-1');

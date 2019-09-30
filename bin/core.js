@@ -4,7 +4,7 @@
 
 String.formatViaArray = (string, args) =>
 {
-	let cur = string;
+	let cur = string || "";
 
 	for (var n=0; n < args.length; n++)
 	{
@@ -14,6 +14,18 @@ String.formatViaArray = (string, args) =>
 	}
 
 	return cur;
+}
+
+Array._toString = (arr, term="") => 
+{
+	let str = "";
+
+	for (let n=0; n < arr.length; n++)
+	{
+		str += arr[n] + ((n+1 !== arr.length) ? term:"");
+	}
+
+	return str;
 }
 
 Object.filter = (obj, filter) =>
@@ -82,11 +94,11 @@ class EventsHandler extends _Logger
 		this.logAppend(data);
 	} 
 
-	onSessionCreated(userName="null")
+	onAuth(userName, authType)
 	{
-		let msg = userName + ", session created.";
+		let msg = `User: '${userName}'.\n\tAuthType: '${authType}' \n\tAuth checked: 'true'`;
 
-		console.log(msg);
+		console.log("\t" + msg);
 
 		if (this.isLog) this._logWrite('Info', msg, 'onSessionCreated');
 	}
@@ -98,7 +110,7 @@ class EventsHandler extends _Logger
 			msg    = String.formatViaArray(erType['messages'][msgID], Array.from(arguments).slice(2,));
 
 		if (this.isLog) this._logWrite('Error', msg, title);
-		if (erType.critical) throw new Error(msg);
+		if (erType.critical.indexOf(msgID) !== -1) throw new Error(msg);
 	}
 }
 
@@ -180,13 +192,15 @@ class _Request extends EventsHandler
  	{
  		let resp;
 
+ 		this.activeResponse = undefined;
+
  		options.method = (options.method || method).toUpperCase();
  		options.path   = "/" + options.path.replace(/^[\/\/]|^.\//g, "");
 		resp           = await this[options.method](options);
 		
 		return resp;
  	}
-
+	
  	responseParser (response) 
  	{
  		let self = this,
@@ -200,7 +214,11 @@ class _Request extends EventsHandler
  		response.setEncoding('utf8');
 		response.on('error',(er) => {res.errors.push(er)})
 		response.on('data', (c)  => {res.data.push(c);});
-		response.on('end',  (c)  => {self.activeResponse = res;});
+		response.on('end',  (c)  => {
+			res['data']         = JSON.parse(Array._toString(res['data']));
+			res['errors']       = (res['errors'].length > 0) ? JSON.parse(Array._toString(res['errors'])):undefined;
+			self.activeResponse = res;
+		});
     }
 
     async waitingResponse()
