@@ -137,11 +137,7 @@ class _Request extends EventsHandler
 
  		this.connectDefaultAttsOnRequest(options);
 
- 		let req = await this.http.request(options, (response) => 
- 		{
- 			self.responseParser.apply(self, [response]);
- 		});
-
+ 		let req = await this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
     	req.end();
 
     	let resp = await this.waitingResponse();
@@ -188,10 +184,7 @@ class _Request extends EventsHandler
 
  		this.connectDefaultAttsOnRequest(options);
 
- 		req = this.http.request(options, (response) => 
- 		{
- 			self.responseParser.apply(self, [response]);
- 		});
+ 		req = this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
 
     	req.write(data);
     	req.end();
