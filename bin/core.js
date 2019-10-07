@@ -94,6 +94,17 @@ class EventsHandler extends _Logger
 		this.logAppend(data);
 	} 
 
+	onWarning(typeID, msgID)
+	{
+		let erType = this.errors[typeID],
+			title  = erType.type,
+			msg    = String.formatViaArray(erType['messages'][msgID], Array.from(arguments).slice(2,));
+		
+		console.warn(msg);
+		
+		if (this.isLog) this._logWrite('Warning', msg, title);
+	}
+	
 	onAuth(userName, authType)
 	{
 		let msg = `User: '${userName}'.\n\tAuthType: '${authType}' \n\tAuth checked: 'true'`;
@@ -101,6 +112,42 @@ class EventsHandler extends _Logger
 		console.log("\t" + msg);
 
 		if (this.isLog) this._logWrite('Info', msg, 'onSessionCreated');
+	}
+
+	onUserAddedInGroup(userName, groupName)
+	{
+		let msg = `User: ${userName}, add on: '${groupName}'.`;
+
+		console.log("\t" + msg);
+
+		if (this.isLog) this._logWrite('Info', msg, 'onUserAddedInGroup');
+	}
+	
+	onUserRemovedFromGroup(userName, groupName)
+	{
+		let msg = `User: ${userName}, remove from '${groupName}'.`;
+
+		console.log("\t" + msg);
+
+		if (this.isLog) this._logWrite('Info', msg, 'onUserRemovedFromGroup');
+	}
+
+	onUserCreated(userName)
+	{
+		let msg = `User: ${userName}, was created!`;
+
+		console.log("\t" + msg);
+
+		if (this.isLog) this._logWrite('Info', msg, 'onUserCreated');
+	}
+
+	onUserDeleted(userName)
+	{
+		let msg = `User: ${userName}, was deleted!`;
+
+		console.log("\t" + msg);
+
+		if (this.isLog) this._logWrite('Info', msg, 'onUserDeleted');
 	}
 
 	onError(typeID, msgID)
@@ -174,6 +221,13 @@ class _Request extends EventsHandler
 		}
  	}
 
+ 	async DELETE(options)
+ 	{
+ 		let resp = await this.GET(options);
+
+ 		return new Promise((resolve) => resolve(resp));
+ 	}
+
  	async POST(options)
  	{
  		let data = (options.data) ? JSON.stringify(options.data):"",
@@ -182,11 +236,11 @@ class _Request extends EventsHandler
 
  		if (data !== "") delete options.data;
 
- 		this.connectDefaultAttsOnRequest(options);
+ 		await this.connectDefaultAttsOnRequest(options);
 
  		req = this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
 
-    	req.write(data);
+    	if (data !== "") req.write(data);
     	req.end();
 
     	let resp = await this.waitingResponse();
@@ -207,6 +261,21 @@ class _Request extends EventsHandler
 		return resp;
  	}
 	
+	innerProtocol(data)
+	{
+		let parsed;
+
+		if (data.length === 0) 
+		{
+			parsed = data;
+		} else {
+			try      {parsed = JSON.parse(Array._toString(data));} 
+			catch(e) {parsed = data;}
+		}
+
+		return parsed;
+	}
+
  	responseParser (response) 
  	{
  		let self = this,
@@ -221,8 +290,9 @@ class _Request extends EventsHandler
 		response.on('error',(er) => {res.errors.push(er)})
 		response.on('data', (c)  => {res.data.push(c);});
 		response.on('end',  (c)  => {
-			res['data']         = JSON.parse(Array._toString(res['data']));
-			res['errors']       = (res['errors'].length > 0) ? JSON.parse(Array._toString(res['errors'])):undefined;
+
+			res['data']         = this.innerProtocol(res['data']);
+			res['errors']       = this.innerProtocol(res['errors']);
 			self.activeResponse = res;
 		});
     }

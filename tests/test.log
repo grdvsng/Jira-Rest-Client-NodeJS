@@ -1,169 +1,451 @@
-TimeStamp: Mon Sep 30 2019 01:24:28 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:04:30 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 01:24:40 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:04:33 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Укажите имя пользователя."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:04:33 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:08:47 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:08:50 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 500
+	Description:{"errorMessages":["Внутренняя ошибка сервера"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:09:19 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:09:22 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"fullname":"Укажите полное имя.","username":"Укажите имя пользователя."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:09:45 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:09:48 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"fullname":"Укажите полное имя.","username":"Укажите имя пользователя."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:10:02 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:10:05 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"fullname":"Укажите полное имя.","username":"Укажите имя пользователя."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:11:36 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:11:38 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:11:57 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:12:00 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Serever Errors
 Desription: 
-	Application will close, server response 401.
-Response: {"errorMessages":["Ошибка доступа"],"errors":{}}
+	Haven't response from serever: 'localhost'.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:43:48 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:12:14 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:12:20 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:31:49 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Serever Errors
 Desription: 
-	Application will close, server response 503.
-Response: 
+	Haven't response from serever: 'localhost'.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:46:24 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:31:57 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:34:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:35:21 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:35:27 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Необходимо указать параметр запроса «имя пользователя» или «ключ»"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:35:53 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:35:59 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Необходимо указать параметр запроса «имя пользователя» или «ключ»"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:36:14 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:36:20 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Необходимо указать параметр запроса «имя пользователя» или «ключ»"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:38:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:38:15 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Необходимо указать параметр запроса «имя пользователя» или «ключ»"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 15:56:16 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Serever Errors
 Desription: 
-	
+	Haven't response from serever: 'localhost'.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:46:36 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:56:26 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:46:50 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:57:13 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:54:33 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:57:46 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:56:12 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:58:27 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:57:11 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 12:59:31 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:03:04 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:03:09 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:58:30 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Serever Errors
 Desription: 
-	Application will close, server response 401.
-Response: [object Object]
+	Haven't response from serever: 'localhost'.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:03:22 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:58:39 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:09:24 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 15:58:42 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Пользователь с именем \"scientology666\" не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 16:00:02 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
-	admin, session created.
+	User: 'admin'.
+	AuthType: 'basic' 
+	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:14:03 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 16:00:05 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Пользователь с именем \"scientology666\" не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:50:24 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:52:54 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:53:10 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:55:39 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:56:37 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:56:58 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:57:26 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 17:57:47 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:02:44 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Jira Errors
 Desription: 
-	Application will close, server response 400.
-Response: [object Object]
+	Response !== 200!
+Description: 
+{"session":{"name":"JSESSIONID","value":"CD2162E2A1A0679AC15E038F2097D5D6"},"loginInfo":{"failedLoginCount":64,"loginCount":700,"lastFailedLoginTime":"2019-09-30T16:44:52.552+0300","previousLoginTime":"2019-10-07T18:02:23.968+0300"}}.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:14:40 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:17:13 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:17:56 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:18:26 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:19:03 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:21:51 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:22:31 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:30:03 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	admin, session created.
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:35:37 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:02:44 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
@@ -172,196 +454,16 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:36:04 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-		User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:36:52 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:37:51 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:38:12 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:40:15 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:40:57 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:41:16 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:41:30 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:41:51 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:52:07 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:54:04 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 13:55:28 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:01:47 GMT+0300 (GMT+03:00)
-
-MessageType: Info
-Event: onSessionCreated
-Desription: 
-	User: 'admin'.
-	AuthType: 'session' 
-	Auth checked: 'true'
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:10:32 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:03:27 GMT+0300 (GMT+03:00)
 
 MessageType: Error
-Event: Authorization Errors
+Event: Jira Errors
 Desription: 
-	Application will close, server response 401.
-Response: [object Object]
+	Response !== 200!
+Description: 
+{"session":{"name":"JSESSIONID","value":"4A095180FA73C8874BCBCDB419EE5C26"},"loginInfo":{"failedLoginCount":65,"loginCount":701,"lastFailedLoginTime":"2019-10-07T18:02:51.418+0300","previousLoginTime":"2019-10-07T18:02:43.527+0300"}}.
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:10:50 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 401.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:11:20 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 401.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:12:03 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:12:16 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:12:37 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:13:21 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: [object Object]
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:15:39 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: {"errorMessages":["Вход запрещён"],"errors":{}}
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:15:59 GMT+0300 (GMT+03:00)
-
-MessageType: Error
-Event: Authorization Errors
-Desription: 
-	Application will close, server response 403.
-Response: {"errorMessages":["Вход запрещён"],"errors":{}}
----------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:17:05 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:03:27 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
@@ -370,7 +472,16 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:17:12 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:03:43 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"errorMessages":["Ошибка доступа"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:03:43 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
@@ -379,7 +490,16 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:19:00 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:03:51 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"errorMessages":["Ошибка доступа"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:03:51 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
@@ -388,7 +508,16 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:20:03 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:04:07 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"errorMessages":["Ошибка доступа"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:04:07 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
@@ -397,12 +526,1543 @@ Desription:
 	AuthType: 'session' 
 	Auth checked: 'true'
 ---------------------------------------------------------
-TimeStamp: Mon Sep 30 2019 14:20:29 GMT+0300 (GMT+03:00)
+TimeStamp: Mon Oct 07 2019 18:05:21 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:05:21 GMT+0300 (GMT+03:00)
 
 MessageType: Info
 Event: onSessionCreated
 Desription: 
 	User: 'admin'.
 	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:05:37 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:05:37 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:05:46 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:05:46 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:06:15 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:06:15 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:06:53 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:06:56 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Response !== 200!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:07:21 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:07:36 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"status":403,"errors":[],"data":{"errorMessages":["Вход запрещён"],"errors":{}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:08:01 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"status":200,"errors":[],"data":{"session":{"name":"JSESSIONID","value":"9A0B53D0CB53D488365FA0CDC6F386BC"},"loginInfo":{"failedLoginCount":78,"loginCount":703,"lastFailedLoginTime":"2019-10-07T18:07:35.583+0300","previousLoginTime":"2019-10-07T18:07:51.656+0300"}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:08:28 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"status":200,"errors":[],"data":{"session":{"name":"JSESSIONID","value":"602BD0C210B84BF8CD699DF06135A4C0"},"loginInfo":{"failedLoginCount":78,"loginCount":704,"lastFailedLoginTime":"2019-10-07T18:07:35.583+0300","previousLoginTime":"2019-10-07T18:08:00.487+0300"}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:08:37 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"status":200,"errors":[],"data":{"session":{"name":"JSESSIONID","value":"D89AF081B0837AEEF08924146566B49F"},"loginInfo":{"failedLoginCount":78,"loginCount":705,"lastFailedLoginTime":"2019-10-07T18:07:35.583+0300","previousLoginTime":"2019-10-07T18:08:27.235+0300"}}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:08:47 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:27:01 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Session' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:28:06 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:28:49 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:30:48 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:31:49 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:32:01 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:33:19 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:33:39 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:34:50 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:35:08 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:35:45 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:36:15 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:37:20 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:38:01 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:39:09 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:39:22 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:40:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:40:52 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:40:55 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Пользователь с именем \"scientology666\" не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:40:55 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Пользователь с именем \"scientology666\" не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:41:21 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:41:24 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:41:35 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:41:38 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"self":"http://localhost:8080/rest/api/2/user?username=scientology666","key":"JIRAUSER10200","name":"scientology666","emailAddress":"mia@atlassian.com","avatarUrls":{"48x48":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=48","24x24":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=24","16x16":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=16","32x32":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=32"},"displayName":"John Travolta","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":1,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:41:58 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:42:01 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"self":"http://localhost:8080/rest/api/2/user?username=scientology666","key":"JIRAUSER10200","name":"scientology666","emailAddress":"mia@atlassian.com","avatarUrls":{"48x48":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=48","24x24":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=24","16x16":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=16","32x32":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=32"},"displayName":"John Travolta","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":1,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:45:06 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:45:09 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"self":"http://localhost:8080/rest/api/2/user?username=scientology666","key":"JIRAUSER10200","name":"scientology666","emailAddress":"mia@atlassian.com","avatarUrls":{"48x48":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=48","24x24":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=24","16x16":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=16","32x32":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=32"},"displayName":"John Travolta","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":1,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:47:26 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:47:29 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:47:37 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:47:47 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:50:32 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:50:35 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:50:44 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:50:47 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:57:19 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:57:52 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:57:55 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Группа с именем 'jira-application' не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:58:29 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:58:32 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:58:43 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:58:46 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Невозможно добавить пользователя 'scientology666', пользователь уже состоит в группе 'jira-software-users'"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:59:48 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:59:51 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:59:55 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"name":"jira-software-users","self":"http://localhost:8080/rest/api/2/group?groupname=jira-software-users","users":{"size":3,"items":[],"max-results":50,"start-index":0,"end-index":0},"expand":"users"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 18:59:58 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserDeleted
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:03:45 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:03:49 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"self":"http://localhost:8080/rest/api/2/user?username=scientology666","key":"JIRAUSER10200","name":"scientology666","emailAddress":"mia@atlassian.com","avatarUrls":{"48x48":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=48","24x24":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=24","16x16":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=16","32x32":"https://www.gravatar.com/avatar/e34884493cf7f96ade4e8f738713ac29?d=mm&s=32"},"displayName":"John Travolta","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":0,"items":[]},"applicationRoles":{"size":0,"items":[]},"expand":"groups,applicationRoles"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:03:52 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 201
+	Description:{"name":"jira-software-users","self":"http://localhost:8080/rest/api/2/group?groupname=jira-software-users","users":{"size":3,"items":[],"max-results":50,"start-index":0,"end-index":0},"expand":"users"}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:03:56 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 204
+	Description:[].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:04:19 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:04:22 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:04:29 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserDeleted
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:10:25 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:10:28 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:10:35 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["Группа с именем 'jira-software-users\\' не существует"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:10:39 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserDeleted
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:11:11 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:11:14 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:11:25 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserDeleted
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:17:02 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:17:05 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:17:09 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserAddedInGroup
+Desription: 
+	User: scientology666, add on: 'jira-software-users'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:17:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserRemovedFromGroup
+Desription: 
+	User: scientology666, remove from 'jira-software-users'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:17:16 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserDeleted
+Desription: 
+	User: scientology666, was deleted!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:16 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserCreated
+Desription: 
+	User: undefined, was created!
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:19 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserAddedInGroup
+Desription: 
+	User: scientology666, add on: 'jira-software-users'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:23 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserRemovedFromGroup
+Desription: 
+	User: scientology666, remove from 'jira-software-users'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:55 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:30:58 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:02 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onUserAddedInGroup
+Desription: 
+	User: scientology666, add on: 'jira-software-users'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:05 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:15 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:19 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:22 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Невозможно добавить пользователя 'scientology666', пользователь уже состоит в группе 'jira-software-users'"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:26 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:50 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:54 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":[],"errors":{"username":"Пользоватесь с таким именем уже существует."}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:31:57 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Невозможно добавить пользователя 'scientology666', пользователь уже состоит в группе 'jira-software-users'"],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:32:01 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:32:24 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:32:34 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:42:37 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:42:56 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:42:59 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:["<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><title>Ой, вы обнаружили неработающую ссылку. - JIRA</title><script type=\"text/javascript\">contextPath = \"\";</script><link type='text/css' rel='stylesheet' href='/static-assets/metal-all.css' media='all'><script src='/static-assets/jquery-min.js'></script><script src='/static-assets/metal-all.js'></script><meta name=\"decorator\" content=\"none\" /></head><body class=\" error-page error404\"><script type=\"text/javascript\">document.body.className += \" js-enabled\";</script><div id=\"page\"><header id=\"header\" role=\"banner\"></header><!-- #header --><section id=\"content\" role=\"main\"><div class=\"aui-page-panel\"><div class=\"aui-page-panel-inner\"><section class=\"aui-page-panel-content lowerContent\"><div id=\"error-state\"><span class=\"error-type\"></span><h1>Ой, вы обнаружили неработающую ссылку.</h1><ul><li>Вернуться <a href=\"javascript:window.history.back()\">назад</a></li><li>Перейти на <a href=\"/secure/MyJiraHome.jspa\">Главную страницу</a></li></ul></div></section><!-- .aui-page-panel-content --></div><!-- .aui-page-panel-inner --></div><!-- .aui-page-panel --></section><!-- #content --><footer id=\"footer\" role=\"contentinfo\"><section class=\"footer-body\"><ul class=\"atlassian-footer\">\n    <li>\n        Atlassian Jira <a class=\"seo-link\" rel=\"nofollow\" href=\"https://www.atlassian.com/software/jira\">Project Management Software</a>\n                                            <span id=\"footer-build-information\">(v8.4.1#804002-<span title='94e96d6294939fc41f873484cf96b18ab6f2be0a' data-commit-id='94e96d6294939fc41f873484cf96b18ab6f2be0a}'>sha1:94e96d6</span>)</span>\n    </li>\n    <li>\n        <a id=\"about-link\" rel=\"nofollow\" href=\"/secure/AboutPage.jspa/secure/AboutPage.jspa\">About Jira</a>\n    </li>\n    <li>\n        <a id=\"footer-report-problem-link\" rel=\"nofollow\" href=\"/secure/CreateIssue!default.jspa\">Report a problem</a>\n    </li>\n</ul>\n    <p class=\"atlassian-footer\">\n        <span class=\"licensemessagered\">\n                При поддержке бесплатной <a rel='nofollow' href='http://www.atlassian.com/software/jira'>временной лицензии Jira</a> Atlassian. Пожалуйста, подумайте <a rel='nofollow' href='/plugins/servlet/applications/versions-licenses'>о ее покупке</a> сегодня.\n\n        </span>\n    </p>\n<div id=\"footer-logo\"><a href=\"http://www.atlassian.com/\" rel=\"nofollow\">Atlassian</a></div></section></footer><!-- #footer --></div><!-- #page --></body></html>"].
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:43:40 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:43:43 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"message":"null for uri: http://localhost:8080/rest/api/2/project/TEST/roledetails","status-code":404}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:45:06 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:45:32 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:45:54 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:49:20 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:49:23 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:49:35 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:49:52 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:50:09 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:50:29 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:50:46 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:51:23 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:52:59 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:53:23 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:53:44 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:56:00 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:56:11 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:56:23 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:56:44 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:56:57 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:57:12 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:57:35 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:57:45 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:58:16 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:58:43 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 19:59:01 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:00:48 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:01:14 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:01:35 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:01:49 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:02:05 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:02:27 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:03:03 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:03:29 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:03:44 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:04:11 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:09:28 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:14:09 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:14:13 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:14:22 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:14:26 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Can not deserialize instance of java.lang.String[] out of VALUE_STRING token\n at [Source: org.apache.catalina.connector.CoyoteInputStream@56d146f3; line: 1, column: 2]"]}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:15:41 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:15:45 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Can not deserialize instance of java.lang.String[] out of VALUE_STRING token\n at [Source: org.apache.catalina.connector.CoyoteInputStream@71677a3f; line: 1, column: 2]"]}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:20:16 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:20:20 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Can not deserialize instance of java.lang.String[] out of VALUE_STRING token\n at [Source: org.apache.catalina.connector.CoyoteInputStream@71677a3f; line: 1, column: 2]"]}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:28:58 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:29:02 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Can not deserialize instance of java.lang.String[] out of VALUE_STRING token\n at [Source: org.apache.catalina.connector.CoyoteInputStream@71677a3f; line: 1, column: 2]"]}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:29:38 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:29:42 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:{"errorMessages":["Can not deserialize instance of java.lang.String[] out of VALUE_STRING token\n at [Source: org.apache.catalina.connector.CoyoteInputStream@71677a3f; line: 1, column: 2]"]}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:30:08 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:30:12 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:30:19 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:30:23 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["'scientology666' уже является членом роли проекта."],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:31:49 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:31:53 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["'scientology666' уже является членом роли проекта."],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:32:45 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:32:49 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["'scientology666' уже является членом роли проекта."],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:33:07 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:33:11 GMT+0300 (GMT+03:00)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:{"errorMessages":["'scientology666' уже является членом роли проекта."],"errors":{}}.
+---------------------------------------------------------
+TimeStamp: Mon Oct 07 2019 20:33:27 GMT+0300 (GMT+03:00)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
 	Auth checked: 'true'
 ---------------------------------------------------------
