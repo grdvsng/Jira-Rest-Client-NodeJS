@@ -12,8 +12,8 @@
   {
     "include": 
     [  
-      "./bin/core.js",
-      "./bin/JiraClient.js"
+      "./bin/",
+      "./tests/"
     ],
     "exclude": 
     [  
@@ -26,13 +26,13 @@
     "template": "templates/default",
     "encoding": "utf8",
     "destination": "./doc/",
-    "recurse": true,
+    "recurse": false,
     "tutorials": ""
   },
-  "plugins": ["plugins/markdown"],
+  "plugins": [],
   "templates": 
   {
-    "cleverLinks": false
-    ,"monospaceLinks": false
+    "cleverLinks": true
+    ,"monospaceLinks": true
   }
 }

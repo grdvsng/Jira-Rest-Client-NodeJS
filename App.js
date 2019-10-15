@@ -2,4 +2,4 @@
 	Application
 */
 
-const JiraClient = require('./bin/JiraClient')['JiraClient'];
+const App = require('./bin/JiraClient')['JiraClient'];

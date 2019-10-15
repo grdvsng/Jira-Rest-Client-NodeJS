@@ -28,19 +28,27 @@ const btoa = (data) => { return Buffer.from(data).toString('base64') };
  */
 const atob = (data) => { return Buffer.from(data, 'ascii').toString('utf8') };
 
+/** 
+ * Interface for InnerError. 
+ * {@link module:core.js}.
+ * @class
+ * @requires module:core.js
+ */
+const InnerError = require('./core')['InnerError'];
+
 /**
  * Class for use universaL requests methods.
- * {@link module:bin/core.js}.
+ * {@link module:core.js}.
  * @class
- * @requires module:bin/core.js
+ * @requires module:core.js
  */
 const _Request = require('./core')['_Request'];
 
 /** 
  * Parsed response from Jira
- * {@link module:bin/core.js}.
+ * {@link module:core.js}.
  * @class
- * @requires module:bin/core.js
+ * @requires module:core.js
  */
 const _Response = require('./core')['_Response'];
 
@@ -425,27 +433,6 @@ class JiraClient extends _Request
     }
 }
 
-
-/** 
- * Class for Inner Errors. 
- * @type Class
- */
-class InnerError
-{
-    /**
-     * Create new InnerError.
-     * @param {String}         type     - Type of Error.
-     * @param {Array.<Number>} critical - Array with index of message from InnerError.messages with criticale system error.
-     * @param {Array.<String>} messages - Array with Error description.
-     * @returns {void}
-     */
-    constructor(type, critical, messages)
-    {
-        this.type     = type;
-        this.critical = critical;
-        this.messages = messages;
-    }
-}
 
 /** 
  * Application InnerErrors Array.

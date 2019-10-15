@@ -117,7 +117,6 @@ let tests =
 	new Test('search',              ["project = Test And resolution = Unresolved", 0, 50]),
 	new Test('getIsue',             ['Test-1']),
 	new Test('createUser',          [{"displayName":  "John Travolta", "name": "scientology666", "applicationKeys": []}]),
-	new Test('deleteUser',          ["scientology666"]),
 	new Test('getUser',             ["scientology666"]),
 	new Test('getProjectRoles',     ["Test"]),
 	new Test('getRoleId',           ["Administrator", "Test"]),
@@ -125,7 +124,8 @@ let tests =
 	new Test('addUserInGroup',      ["scientology666", "jira-software-users"]),
 	new Test('removeUserFromGroup', ["scientology666", "jira-software-users"]),
 	new Test('generateBasicAuth',   ["project = Test And resolution = Unresolved", 0, 50]),
-	new Test('createSession',       ["project = Test And resolution = Unresolved", 0, 50])
+	new Test('createSession',       ["project = Test And resolution = Unresolved", 0, 50]),
+	new Test('deleteUser',          ["scientology666"])
 ];
 
 
