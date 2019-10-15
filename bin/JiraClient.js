@@ -246,7 +246,7 @@ class JiraClient extends _Request
     {
         let options = 
             {
-                path: "/rest/api/2/user/?username=" + userName,
+                path: `/rest/api/2/user/?username=${userName}`,
             },
             resp = await this._request(options, "get", false);
 
