@@ -1,6 +1,7 @@
 @echo off
-@cd/d "%~dp0"
+@title JSDoc
 
-title JSDOC
+powershell -noexit -c "jsdoc '%cd%' -c '%cd%/conf.json'; exit;"
 
-jsdoc "%cd%"
+echo continue...
+pause
