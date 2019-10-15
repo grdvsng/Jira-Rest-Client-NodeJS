@@ -1,0 +1,38 @@
+{
+  "tags": 
+  {
+    "allowUnknownTags": true,
+    "dictionaries": 
+    [
+       "jsdoc"
+      ,"closure"
+    ]
+  },
+  "source": 
+  {
+    "include": 
+    [  
+      //"./bin/core.js",
+      "./bin/JiraClient.js"
+    ],
+    "exclude": 
+    [  
+    ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": 
+  {
+    "template": "templates/default",
+    "encoding": "utf8",
+    "destination": "./doc/",
+    "recurse": true,
+    "tutorials": ""
+  },
+  "plugins": [],
+  "templates": 
+  {
+    "cleverLinks": false
+    ,"monospaceLinks": false
+  }
+}
