@@ -269,7 +269,7 @@ class EventsHandler extends _Logger
 	onCoreError(msg)
 	{
 		if (this.isLog) this._logWrite('Error', msg, 'Critical Error.');
-		return throw new Error(msg);
+		throw new Error(msg);
 	}	
 }
 
@@ -474,10 +474,10 @@ class _Request extends EventsHandler
 		response.on('error',(er) => {errors.push(er)})
 		response.on('data', (c)  => {data.push(c);});
 		response.on('end',  (c)  => {
-			self.activeResponse = new Response(
+			self.activeResponse = new _Response(
 				_Response.statusCode, 
-				this.innerProtocol(res['data']), 
-				this.innerProtocol(res['errors'])
+				this.innerProtocol(data), 
+				this.innerProtocol(errors)
 		)});
     }
 

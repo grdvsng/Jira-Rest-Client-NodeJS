@@ -29,7 +29,13 @@
     "recurse": false,
     "tutorials": ""
   },
-  "plugins": [],
+  
+  "plugins": ["plugins/markdown"],
+  "markdown": 
+  {
+    "tags": ["foo", "bar"]
+  },
+
   "templates": 
   {
     "cleverLinks": true

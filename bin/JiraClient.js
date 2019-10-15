@@ -81,7 +81,7 @@ class BasicAuth extends _Request
         this.options['headers']['Authorization'] = b64data;
 
         let result = await this.request({ 'path': '/rest/api/2/user/?username=admin' }, 'get');
-
+        console.log(result)
         if (result.status !== 200) return this.onError(3, 2, JSON.stringify(result));
 
         return b64data;

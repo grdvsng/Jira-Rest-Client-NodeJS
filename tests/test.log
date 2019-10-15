@@ -2276,3 +2276,66 @@ Event: Critical Error.
 Desription: 
 	Server: 'http://localhost:8080', not available...
 ---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 22:02:22 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 22:02:22 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 22:03:29 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 22:03:29 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 23:15:49 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 23:16:14 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 23:16:59 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 23:55:36 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
+TimeStamp: Tue Oct 15 2019 23:55:36 GMT+0300 (GMT+03:00)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------------
