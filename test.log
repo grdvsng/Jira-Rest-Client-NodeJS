@@ -1,0 +1,49 @@
+TimeStamp: Wed Oct 23 2019 18:08:21 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:08:21 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:09:07 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:09:07 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription:
+	Server: 'http://localhost:8080', not available...
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:09:28 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription:
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:13:24 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription:
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 18:17:30 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription:
+	Haven't response from serever: 'localhost'.
+---------------------------------------------------

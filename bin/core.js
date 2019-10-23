@@ -11,7 +11,7 @@ String.formatViaArray = (string, args) =>
 	for (var n=0; n < args.length; n++)
 	{
 		let re = new RegExp('\\{' + n + '\\}', "g")
-		
+
 		cur = cur.replace(re, args[n]);
 	}
 
@@ -79,8 +79,8 @@ class _Logger
 
 		this.fso   = require('fs');
 		this.isLog = logPath != undefined;
-		
-		if (this.isLog) 
+
+		if (this.isLog)
 		{
 			if (!this.fso.existsSync(logPath))
 			{
@@ -116,7 +116,7 @@ class _Logger
 		var time = "TimeStamp: " + (new Date()) + "\n",
 			data = time + msg + "\n" + '-'.repeat(time.length) + "\n";
 
-		this.fso.appendFile(this.logFile, data, this.errorHandler); 
+		this.fso.appendFile(this.logFile, data, this.errorHandler);
 	}
 }
 
@@ -152,7 +152,7 @@ class EventsHandler extends _Logger
 		let data = `\nMessageType: ${MessageType}\nEvent: ${Event}\nDesription: \n\t${Desription}`;
 
 		this.logAppend(data);
-	} 
+	}
 
 	/**
      * Write.log, print information, ...
@@ -165,9 +165,9 @@ class EventsHandler extends _Logger
 		let erType = this.errors[typeID],
 			title  = erType.type,
 			msg    = String.formatViaArray(erType['messages'][msgID], Array.from(arguments).slice(2,));
-		
+
 		console.warn(msg);
-		
+
 		if (this.isLog) this._logWrite('Warning', msg, title);
 	}
 
@@ -270,11 +270,11 @@ class EventsHandler extends _Logger
 	{
 		if (this.isLog) this._logWrite('Error', msg, 'Critical Error.');
 		throw new Error(msg);
-	}	
+	}
 }
 
 
-/** 
+/**
  * Parsed response from Jira
  * @type Class
  */
@@ -298,10 +298,11 @@ class _Response
 
 /**
  * Class for use universaL requests methods.
+ * @class
  * @exetends EventsHandler
  */
 class _Request extends EventsHandler
-{	
+{
 
 	/**
      * Generate Basic parameters.
@@ -313,16 +314,38 @@ class _Request extends EventsHandler
 	{
 		super(ClientErrors, parameters.log);
 
-		this.http    =  require(parameters['protocol'] || "http");
-		this.baseUrl =  parameters['protocol'] + ":" + "//" + (parameters.host || parameters.hostname) + ":" + parameters.port,
+		this.http    = require(parameters['protocol'] || "http");
+		this.baseUrl = this.generateBaseUrl(parameters),
 		this.options = Object.filter({
 			port:     parameters.port,
 			host:     parameters.host,
 			hostname: parameters.hostname,
-			headers:  parameters.headers	
+			headers:  parameters.headers
 		}, function(a) {return a != undefined});
 	}
- 	
+
+	generateBaseUrl(parameters)
+	{
+		var base_url = parameters['protocol'] + ":" + "//";
+
+		if (parameters['hostname'])
+		{
+			return base_url + parameters['hostname'];
+		}
+		else if (parameters['host'])
+		{
+			if (parameters['port'])
+			{
+				return base_url + parameters['host'] + ":" + parameters['host'];
+			} else {
+				return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
+			}
+		} else {
+
+		}
+
+	}
+
  	/**
      * Request Get.
      * @param {Options} options - request header, data and|or other parameters.
@@ -338,10 +361,10 @@ class _Request extends EventsHandler
     	req.end();
 
     	let resp = await this.waitingResponse();
-    	
+
     	return new Promise((resolve) => resolve(resp));
  	}
- 	
+
  	/**
      * Connect basic headers to request.
      * @param {Options} options - request headers, data and|or other parameters.
@@ -352,7 +375,7 @@ class _Request extends EventsHandler
  		for (var att in this.options)
  		{
  			let val = this.options[att];
- 			
+
  			if ((typeof val) !== 'object' || options[att] === undefined)
  			{
  				options[att] = val;
@@ -363,7 +386,7 @@ class _Request extends EventsHandler
 
  		return options;
  	}
-	
+
 	/**
      * Web path generation
      * @param {String} basicPath - auth to append.
@@ -374,7 +397,7 @@ class _Request extends EventsHandler
  	{
  		let re = new RegExp(basicPath, "g");
 
- 		if (path.match(re)) 
+ 		if (path.match(re))
 		{
 			return path;
 		} else {
@@ -415,10 +438,10 @@ class _Request extends EventsHandler
     	req.end();
 
     	let resp = await this.waitingResponse();
-    	
+
     	return new Promise((resolve) => resolve(resp));
  	}
-	
+
     /**
      * Request universal method.
      * @param {Options} options - request header, data and|or other parameters.
@@ -434,26 +457,26 @@ class _Request extends EventsHandler
  		options.method = (options.method || method).toUpperCase();
  		options.path   = "/" + options.path.replace(/^[\/\/]|^.\//g, "");
 		resp           = await this[options.method](options);
-		
-		if (!resp) this.onCoreError(`Server: '${this.baseUrl}', not available...`);
-		
+
+		if (!resp) return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
+
 		return resp.status;
  	}
-	
+
 	/**
      * Parse and convert response data.
-     * @param {Array.<String>} data - Array with responsed data.
+     * @param {Array.<String>} data - Array with response data.
      * @returns {String}
      */
 	innerProtocol(data)
 	{
 		let parsed;
 
-		if (data.length === 0) 
+		if (data.length === 0)
 		{
 			parsed = data;
 		} else {
-			try      {parsed = JSON.parse(Array._toString(data));} 
+			try      {parsed = JSON.parse(Array._toString(data));}
 			catch(e) {parsed = data;}
 		}
 
@@ -464,12 +487,12 @@ class _Request extends EventsHandler
      * Parse response from server and convert to _Response(return in self.activeResponse);
      * @returns {void}
      */
- 	async responseParser (response) 
+ 	async responseParser (response)
  	{
  		let self   = this,
  			errors = [],
- 			data   = [];
- 		
+			 data   = [];
+
  		response.setEncoding('utf8');
 		response.on('error',(er) => {errors.push(er)})
 		response.on('data', (c)  => {data.push(c);});

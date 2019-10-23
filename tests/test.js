@@ -4,7 +4,7 @@
  */
 
 
-/** 
+/**
  * Test interface.
  */
 class Test
@@ -25,7 +25,7 @@ class Test
 }
 
 
-/** 
+/**
  * Class for Testing.
  */
 class UnitTester
@@ -37,7 +37,7 @@ class UnitTester
      */
 	constructor(basicClass)
 	{
-		try 
+		try
 		{
 			this.testClass = new basicClass(...Array.from(arguments).slice(1,));
 		} catch (e) {
@@ -45,7 +45,7 @@ class UnitTester
 			throw e;
 		}
 	}
-	
+
 	/**
      * Create new client.
      * @param {Test} test - test to run.
@@ -60,7 +60,7 @@ class UnitTester
 			await this.testClass[test.method](...test.params);
 			msg += `not found`;
 		} catch (e) {
-			if (e instanceof test.exec) 
+			if (e instanceof test.exec)
 			{
 				msg += `${test.exec}`;
 			} else {throw e;}
@@ -88,10 +88,10 @@ class UnitTester
 }
 
 
-let params = 
+let params =
 {
 	"log":      "./test.log",
-	"host":     "localhost",
+	"host":     "127.0.0.1",
 	"port":     "8080",
 	"protocol": "http",
 
@@ -101,17 +101,17 @@ let params =
 	},
 };
 
-let auth = 
+let auth =
 {
 	type: 'basic',
-	data: 
+	data:
 	{
 		username: 'admin',
-		password: 'admin'
+		password: 'c!v2b3n4'
 	}
 };
 
-let tests = 
+let tests =
 [
 	new Test('_request',            [{path: "rest/api/2/search", data: {jql: "",startAt: 0, maxResults: 50}}]),
 	new Test('search',              ["project = Test And resolution = Unresolved", 0, 50]),
