@@ -1,21 +1,55 @@
-TimeStamp: Wed Oct 23 2019 23:26:55 GMT+0300 (MSK)
+TimeStamp: Wed Oct 23 2019 23:36:14 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription:
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------TimeStamp: Wed Oct 23 2019 23:38:15 GMT+0300 (MSK)
 
 MessageType: Error
 Event: Serever Errors
 Desription: 
 	Haven't response from serever: '127.0.0.1'.
 ---------------------------------------------------
-TimeStamp: Wed Oct 23 2019 23:33:47 GMT+0300 (MSK)
+TimeStamp: Wed Oct 23 2019 23:40:30 GMT+0300 (MSK)
 
 MessageType: Error
-Event: Critical Error.
+Event: Serever Errors
 Desription: 
-	Server: 'http://127.0.0.1:8080', not available...
+	Haven't response from serever: '127.0.0.1'.
 ---------------------------------------------------
-TimeStamp: Wed Oct 23 2019 23:33:47 GMT+0300 (MSK)
+TimeStamp: Wed Oct 23 2019 23:41:27 GMT+0300 (MSK)
 
 MessageType: Error
-Event: Critical Error.
+Event: Serever Errors
 Desription: 
-	Server: 'http://127.0.0.1:8080', not available...
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:42:41 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:44:13 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:44:35 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:45:28 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
 ---------------------------------------------------

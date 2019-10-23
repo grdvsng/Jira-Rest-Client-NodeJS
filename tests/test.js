@@ -68,7 +68,7 @@ class UnitTester
 
 		console.warn(msg);
 
-		return msg;
+		return new Promise((resolve)=> resolve(msg));
 	}
 
 	/**
@@ -106,7 +106,7 @@ let auth =
 	data:
 	{
 		username: 'admin',
-		password: 'c!v2b3n4'
+		password: 'C!v2b3n4'
 	}
 };
 

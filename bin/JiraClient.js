@@ -137,7 +137,7 @@ class Session extends _Request
  * Class for use Jira Rest Api
  * @extends _Request
  */
-class JiraClient extends _Request 
+class JiraClient extends _Request
 {
 
     /**
@@ -146,25 +146,23 @@ class JiraClient extends _Request
      * @param {object} authData - Username and password.
      * @returns {void}
      */
-    constructor(parameters, auth) 
+    constructor(parameters, auth)
     {
         super(parameters, _InnerErrors);
 
         this.auth = auth;
         this.options['headers']['Accept'] = 'application/json';
 
-        switch (this.auth.type) {
-            case 'session':
-                this.createSession(parameters);
-                break;
-            case 'basic':
-                this.generateBasicAuth(parameters);
-                break;
-            default:
-                this.onError(1, 0, this.auth.type);
+        if (this.auth.type === 'session')
+        {
+            this.createSession(parameters);
+        } else if (this.auth.type === 'basic') {
+            this.generateBasicAuth(parameters);
+        } else {
+            this.onError(1, 0, this.auth.type);
         }
     }
-    
+
     /**
      * Search in jira.
      * @param {String} [_jql = ""]  - JQL querty.

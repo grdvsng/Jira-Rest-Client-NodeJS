@@ -515,7 +515,9 @@ class _Request extends EventsHandler
 		{
 			try{
 				parsed = JSON.parse(Array._toString(data));
-			} catch(e) {console.warn(`Can't parse data from Response.`)}
+			} catch(e) {console.warn(`Can't parse data from Response.\n\t \
+									  Error: \n\t\t${e} \n\t\t \
+									  Data:\n\t\t${Array._toString(data)}`)}
 		}
 
 		return parsed;
