@@ -155,6 +155,23 @@ class EventsHandler extends _Logger
 	}
 
 	/**
+     * Generate EventsHandler parameters.
+     * @param {String} parameters - connection parameters.
+     * @returns {(Object | Error)}
+     */
+	onServerConnection(parameters)
+	{
+		if (parameters['hostname'] || (parameters['host'] && parameters['port']))   
+		{
+			return parameters;
+		} else if (!parameters['hostname'] || (!parameters['host'] || !parameters['port'])) {
+			this.onCoreError(`Connection parameters are Empty, please check examples of connect parameters`);
+		} else {
+			this.onCoreError(`For connection by host and port all property are require.`);
+		}
+	}
+
+	/**
      * Write.log, print information, ...
      * @param {Number} typeID - Index of InnerError in this.errors.
      * @param {Number} msgID - Index of Message(to print) in this.errors['messages'].
@@ -324,26 +341,47 @@ class _Request extends EventsHandler
 		}, function(a) {return a != undefined});
 	}
 
+	/**
+	 * Generate server basic url by protocol, host and port addresses
+	 * @param {String} protocol - server application protocol.
+	 * @param {String} host - server host address.
+	 * @param {String} port - server port address.
+	 * @returns {String}
+	 */
+	generateBasicUrlByHostAndPort(protocol, host, port)
+	{
+		return `${protocol}://${host}:${port}`;
+	}
+
+	/**
+	 * Generate server basic url by protocol and hostname
+	 * @param {String} protocol - server application protocol.
+	 * @param {String} hostname - server host name.
+	 * @returns {String}
+	 */
+	generateBasicUrlByHostname(protocol, hostname)
+	{
+		return `${protocol}://${hostname}`;
+	}
+
+	/**
+	 * Generate server basic url.
+	 * @param {Object} parameters - server configuration parameters.
+	 * @returns {string}
+	 */
 	generateBaseUrl(parameters)
 	{
-		var base_url = parameters['protocol'] + ":" + "//";
+		this.onServerConnection(parameters);
 
 		if (parameters['hostname'])
 		{
-			return base_url + parameters['hostname'];
+			return this.generateBasicUrlByHostname(parameters['protocol'], parameters['hostname']);
 		}
-		else if (parameters['host'])
+
+		if (parameters['host'])
 		{
-			if (parameters['port'])
-			{
-				return base_url + parameters['host'] + ":" + parameters['host'];
-			} else {
-				return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
-			}
-		} else {
-
+			return this.generateBasicUrlByHostAndPort(parameters['protocol'], parameters['host'], parameters['port']);
 		}
-
 	}
 
  	/**
@@ -355,7 +393,7 @@ class _Request extends EventsHandler
  	{
  		let self = this;
 
- 		this.connectDefaultAttsOnRequest(options);
+ 		this.connectDefaultAttrsOnRequest(options);
 
  		let req = await this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
     	req.end();
@@ -370,7 +408,7 @@ class _Request extends EventsHandler
      * @param {Options} options - request headers, data and|or other parameters.
      * @returns {(_Response | Boolean)}
      */
- 	connectDefaultAttsOnRequest(options)
+ 	connectDefaultAttrsOnRequest(options)
  	{
  		for (var att in this.options)
  		{
@@ -428,13 +466,13 @@ class _Request extends EventsHandler
  			self = this,
  			req;
 
- 		if (data !== "") delete options.data;
+ 		delete options.data;
 
- 		await this.connectDefaultAttsOnRequest(options);
+ 		await this.connectDefaultAttrsOnRequest(options);
 
  		req = this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
 
-    	if (data !== "") req.write(data);
+    	req.write(data);
     	req.end();
 
     	let resp = await this.waitingResponse();
@@ -470,14 +508,13 @@ class _Request extends EventsHandler
      */
 	innerProtocol(data)
 	{
-		let parsed;
+		let parsed = data;
 
-		if (data.length === 0)
+		if (data.length > 0)
 		{
-			parsed = data;
-		} else {
-			try      {parsed = JSON.parse(Array._toString(data));}
-			catch(e) {parsed = data;}
+			try{
+				parsed = JSON.parse(Array._toString(data));
+			} catch(e) {console.warn(`Can't parse data from Response.`)}
 		}
 
 		return parsed;
@@ -498,8 +535,8 @@ class _Request extends EventsHandler
 		response.on('data', (c)  => {data.push(c);});
 		response.on('end',  (c)  => {
 			self.activeResponse = new _Response(
-				_Response.statusCode, 
-				this.innerProtocol(data), 
+				_Response.statusCode,
+				this.innerProtocol(data),
 				this.innerProtocol(errors)
 		)});
     }
@@ -511,8 +548,8 @@ class _Request extends EventsHandler
     async waitingResponse()
 	{
 		let self = this;
-		
-		if (!self.activeResponse) 
+
+		if (!self.activeResponse)
 		{
 			await new Promise(resolve => {setTimeout(resolve, 1000);});
 
@@ -523,7 +560,7 @@ class _Request extends EventsHandler
 	}
 }
 
-module.exports = 
+module.exports =
 {
 	'_Request': _Request,
 	'_Response': _Response,

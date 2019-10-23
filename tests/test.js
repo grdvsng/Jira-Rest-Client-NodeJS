@@ -87,7 +87,6 @@ class UnitTester
 	}
 }
 
-
 let params =
 {
 	"log":      "./test.log",
