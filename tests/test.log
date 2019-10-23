@@ -5,3 +5,17 @@ Event: Serever Errors
 Desription: 
 	Haven't response from serever: '127.0.0.1'.
 ---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:33:47 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------
+TimeStamp: Wed Oct 23 2019 23:33:47 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------

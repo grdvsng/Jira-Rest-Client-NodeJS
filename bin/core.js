@@ -410,7 +410,8 @@ class _Request extends EventsHandler
      */
  	connectDefaultAttrsOnRequest(options)
  	{
- 		for (var att in this.options)
+		for (var att in this.options)
+
  		{
  			let val = this.options[att];
 
