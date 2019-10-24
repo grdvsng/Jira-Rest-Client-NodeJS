@@ -192,11 +192,11 @@ class JiraClient extends _Request
      * @param {String} isueID - Isue Id in Jira.
      * @returns {_Response}
      */
-    async getIsue(isueID) 
+    async getIssue(issueID)
     {
-        let options = 
+        let options =
             {
-                path: 'rest/api/2/issue/?id=' + isueID
+                path: 'rest/api/2/issue/?id=' + issueID
             },
             resp = await this._request(options, "get", false);
 
@@ -208,14 +208,14 @@ class JiraClient extends _Request
      * @param {Object} userData - Object with user attributes(read Jira doc).
      * @returns {_Response}
      */
-    async createUser(userData) 
+    async createUser(userData)
     {
         let options = {};
 
         options['path'] = '/rest/api/2/user';
         options['data'] = userData;
 
-        if (!userData['name'] || !userData['emailAddress']) return this.onWarning(3, 0, 'userData, emailAddress');
+        if (!userData['name'] && !userData['emailAddress']) return this.onWarning(3, 0, 'userData, emailAddress');
 
         let resp = await this._request(options, "post", false);
 
@@ -248,9 +248,9 @@ class JiraClient extends _Request
      * @param {String} userName - username in jira.
      * @returns {_Response}
      */
-    async getUser(username) 
+    async getUser(userName)
     {
-        let options = 
+        let options =
             {
                 path: `/rest/api/2/user/?username=${userName}`,
             },
@@ -258,7 +258,7 @@ class JiraClient extends _Request
 
         return resp;
     }
-    
+
     /**
      * Get all project roles.
      * @param {(String | Number)} projectKey - project key or id in jira.
@@ -407,7 +407,7 @@ class JiraClient extends _Request
      * @param {Object} parameters - request header, data and|or other parameters.
      * @returns {void}
      */
-    async generateBasicAuth(parameters) 
+    async generateBasicAuth(parameters)
     {
         let basic = new BasicAuth(parameters, this.auth.data);
 
@@ -421,7 +421,7 @@ class JiraClient extends _Request
      * @param {Object} parameters - request header, data and|or other parameters.
      * @returns {void}
      */
-    async createSession(parameters) 
+    async createSession(parameters)
     {
         let session = new Session(parameters, this.auth.data);
 
@@ -432,9 +432,9 @@ class JiraClient extends _Request
 }
 
 
-/** 
+/**
  * Application InnerErrors Array.
- * @type Array.<InnerError> 
+ * @type Array.<InnerError>
  * @constant
  */
 const _InnerErrors = [
@@ -445,20 +445,20 @@ const _InnerErrors = [
     ), new InnerError(
         'Core Errors',
         [0],
-        ["Sory, auth: {0}, not supported now."]
+        ["Sorry, auth: {0}, not supported now."]
     ), new InnerError(
-        'Serever Errors',
+        'server Errors',
         [0, 2],
         [
-            "Haven't response from serever: '{0}'.",
-            "Serever return errors: '{0}'.",
+            "Haven't response from server: '{0}'.",
+            "Server return errors: '{0}'.",
             "Test request return: '{0}', check your configuration.\nData: '{1}'."
         ]
     ), new InnerError(
         'Jira Errors',
         [2],
         [
-            "Parameter(s): '{1}' is required.",
+            "Parameter(s): '{0}' is required.",
             "Auth error, check your username and password.\nServer response: {0}",
             "Bad Response!\nDescription: \n{0}.",
             "Can't find role id by value: '{0}', projectName: '{1}'."
@@ -466,7 +466,7 @@ const _InnerErrors = [
     )];
 
 
-module.exports = 
+module.exports =
 {
     'JiraClient': JiraClient
 }

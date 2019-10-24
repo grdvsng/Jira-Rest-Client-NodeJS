@@ -13,14 +13,14 @@ class Test
      * Create new client.
      * @param {String} method - name of method.
      * @param {Array.<Object>} params - method arguments.
-     * @param {Error} exec - Exeception if test catch Error.
+     * @param {String} except - Exception name if test catch Error.
      * @returns {void}
      */
-	constructor(method, params, exec)
+	constructor(method, params, except)
 	{
 		this.method = method;
 		this.params = params;
-		this.exec   = exec;
+		this.except = except;
 	}
 }
 
@@ -47,28 +47,42 @@ class UnitTester
 	}
 
 	/**
+     * Check is error in user exception.
+     * @param {Error} error - founded error.
+	 * @param {String} except - Exception name.
+     * @returns {string}
+     */
+	errorParser(error, except=undefined)
+	{
+		let msg = '',
+			err = (error.__proto__.name) ? error.__proto__.name:error.prototype.name;
+
+		if ((err === except) && err !== undefined)
+		{
+			return msg + `${except}`;
+		} else {
+			throw error;
+		}
+	}
+
+	/**
      * Create new client.
      * @param {Test} test - test to run.
      * @returns {string}
      */
 	async runTest(test)
 	{
-		let msg = `\nMethod: ${test.method} \nError: `;
+		console.warn(`\nMethod: ${test.method}.`);
 
 		try
 		{
 			await this.testClass[test.method](...test.params);
-			msg += `not found`;
+			console.warn('\nError: not found.');
 		} catch (e) {
-			if (e instanceof test.exec)
-			{
-				msg += `${test.exec}`;
-			} else {throw e;}
+			console.warn(`\nError: \n\t${this.errorParser(e, test.except)}.`);
 		}
 
-		console.warn(msg);
-
-		return new Promise((resolve)=> resolve(msg));
+		return new Promise((resolve)=> resolve(true));
 	}
 
 	/**
@@ -82,6 +96,7 @@ class UnitTester
 		{
 			let test = await tests[n];
 
+			console.log(`\nTest: ${n+1}.`);
 			await this.runTest(test);
 		}
 	}
@@ -106,7 +121,7 @@ let auth =
 	data:
 	{
 		username: 'admin',
-		password: 'C!v2b3n4'
+		password: 'c1v2b3n4'
 	}
 };
 
@@ -114,7 +129,7 @@ let tests =
 [
 	new Test('_request',            [{path: "rest/api/2/search", data: {jql: "",startAt: 0, maxResults: 50}}]),
 	new Test('search',              ["project = Test And resolution = Unresolved", 0, 50]),
-	new Test('getIsue',             ['Test-1']),
+	new Test('getIssue',            ['Test-1']),
 	new Test('createUser',          [{"displayName":  "John Travolta", "name": "scientology666", "applicationKeys": []}]),
 	new Test('getUser',             ["scientology666"]),
 	new Test('getProjectRoles',     ["Test"]),

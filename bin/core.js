@@ -4,18 +4,17 @@
  * @version 0.1.0
  */
 
-String.formatViaArray = (string, args) =>
-{
-	let cur = string || "";
 
+String.formatViaArray = (str, args) =>
+{
 	for (var n=0; n < args.length; n++)
 	{
 		let re = new RegExp('\\{' + n + '\\}', "g")
 
-		cur = cur.replace(re, args[n]);
+		str = str.replace(re, args[n]);
 	}
 
-	return cur;
+	return str;
 }
 
 Array._toString = (arr, term="") => 
@@ -499,7 +498,7 @@ class _Request extends EventsHandler
 
 		if (!resp) return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
 
-		return resp.status;
+		return new Promise(resolve => resolve(resp));
  	}
 
 	/**
@@ -531,14 +530,14 @@ class _Request extends EventsHandler
  	{
  		let self   = this,
  			errors = [],
-			 data   = [];
+			data   = [];
 
  		response.setEncoding('utf8');
 		response.on('error',(er) => {errors.push(er)})
 		response.on('data', (c)  => {data.push(c);});
-		response.on('end',  (c)  => {
+		response.on('end',  ()  => {
 			self.activeResponse = new _Response(
-				_Response.statusCode,
+				response.statusCode,
 				this.innerProtocol(data),
 				this.innerProtocol(errors)
 		)});

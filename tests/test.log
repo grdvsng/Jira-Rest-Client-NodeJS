@@ -53,3 +53,660 @@ Event: Serever Errors
 Desription: 
 	Haven't response from serever: '127.0.0.1'.
 ---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:50:30 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:50:30 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:50:46 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:51:41 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:52:44 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"errors":{"self":"http://127.0.0.1:8080/rest/api/2/user?username=admin","key":"JIRAUSER10000","name":"admin","emailAddress":"example@google.com","avatarUrls":{"48x48":"http://127.0.0.1:8080/secure/useravatar?avatarId=10335","24x24":"http://127.0.0.1:8080/secure/useravatar?size=small&avatarId=10335","16x16":"http://127.0.0.1:8080/secure/useravatar?size=xsmall&avatarId=10335","32x32":"http://127.0.0.1:8080/secure/useravatar?size=medium&avatarId=10335"},"displayName":"Sergey Trishkin","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":2,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"},"data":[]}.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:52:44 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:52:45 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:52:46 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:52:46 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:42 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Serever Errors
+Desription: 
+	Haven't response from serever: '127.0.0.1'.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:53 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"errors":{"self":"http://127.0.0.1:8080/rest/api/2/user?username=admin","key":"JIRAUSER10000","name":"admin","emailAddress":"example@google.com","avatarUrls":{"48x48":"http://127.0.0.1:8080/secure/useravatar?avatarId=10335","24x24":"http://127.0.0.1:8080/secure/useravatar?size=small&avatarId=10335","16x16":"http://127.0.0.1:8080/secure/useravatar?size=xsmall&avatarId=10335","32x32":"http://127.0.0.1:8080/secure/useravatar?size=medium&avatarId=10335"},"displayName":"Sergey Trishkin","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":2,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"},"data":[]}.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:53 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:54 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:55 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:53:55 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:56:32 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+{"errors":{"self":"http://127.0.0.1:8080/rest/api/2/user?username=admin","key":"JIRAUSER10000","name":"admin","emailAddress":"example@google.com","avatarUrls":{"48x48":"http://127.0.0.1:8080/secure/useravatar?avatarId=10335","24x24":"http://127.0.0.1:8080/secure/useravatar?size=small&avatarId=10335","16x16":"http://127.0.0.1:8080/secure/useravatar?size=xsmall&avatarId=10335","32x32":"http://127.0.0.1:8080/secure/useravatar?size=medium&avatarId=10335"},"displayName":"Sergey Trishkin","active":true,"timeZone":"Europe/Moscow","locale":"ru_RU","groups":{"size":2,"items":[]},"applicationRoles":{"size":1,"items":[]},"expand":"groups,applicationRoles"},"data":[]}.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:56:32 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 15:56:33 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: undefined
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:00:15 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:00:15 GMT+0300 (MSK)
+
+MessageType: Error
+Event: Critical Error.
+Desription: 
+	Server: 'http://127.0.0.1:8080', not available...
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:01:03 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:01:27 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:01:55 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:01:57 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:01:57 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:15:19 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:15:21 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:15:21 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:06 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:08 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:08 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:09 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:10 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:11 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:12 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:13 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:16:14 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:18:27 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:18:29 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:18:29 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:21:51 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:22:10 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:22:12 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:22:12 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:24:50 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:24:52 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:24:52 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:25:22 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:25:24 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:25:24 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:27:05 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:27:39 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:27:53 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:27:55 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:27:55 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): '{1}' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:29:35 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:29:37 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:29:37 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Parameter(s): 'userData, emailAddress' is required.
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:12 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:14 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:15 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:52 GMT+0300 (MSK)
+
+MessageType: Info
+Event: onSessionCreated
+Desription: 
+	User: 'admin'.
+	AuthType: 'Basic' 
+	Auth checked: 'true'
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:54 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 405
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:55 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 400
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:56 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:57 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
+TimeStamp: Thu Oct 24 2019 16:31:58 GMT+0300 (MSK)
+
+MessageType: Warning
+Event: Jira Errors
+Desription: 
+	Bad Response!
+Description: 
+
+{
+	Responese: 404
+	Description:[].
+---------------------------------------------------
