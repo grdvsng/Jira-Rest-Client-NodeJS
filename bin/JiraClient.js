@@ -28,8 +28,8 @@ const btoa = (data) => { return Buffer.from(data).toString('base64') };
  */
 const atob = (data) => { return Buffer.from(data, 'ascii').toString('utf8') };
 
-/** 
- * Interface for InnerError. 
+/**
+ * Interface for InnerError.
  * {@link module:core.js}.
  * @class
  * @requires module:core.js
@@ -89,11 +89,11 @@ class BasicAuth extends _Request
 }
 
 
-/** 
+/**
  * Class for use Session auth in JiraDev Rest Api. 
  * @extends _Request
  */
-class Session extends _Request 
+class Session extends _Request
 {
     /**
      * Create new Session.
@@ -101,7 +101,7 @@ class Session extends _Request
      * @param {object} authData   - Username and password.
      * @returns {void}
      */
-    constructor(parameters, authData) 
+    constructor(parameters, authData)
     {
         super(parameters, _InnerErrors);
 
@@ -112,7 +112,7 @@ class Session extends _Request
      * Generate Authorization for Headers and test connection (via request).
      * @returns {String}
      */
-    async create() 
+    async create()
     {
         let self = this,
             result = await this.request({
@@ -133,7 +133,7 @@ class Session extends _Request
 }
 
 
-/** 
+/**
  * Class for use Jira Rest Api
  * @extends _Request
  */
@@ -146,19 +146,26 @@ class JiraClient extends _Request
      * @param {object} authData - Username and password.
      * @returns {void}
      */
-    constructor(parameters, auth)
+    constructor(parameters)
     {
         super(parameters, _InnerErrors);
 
-        this.auth = auth;
-        this.options['headers']['Accept'] = 'application/json';
+        this.auth = this.getAuth(parameters.auth);
+        this.options['headers']['Accept']       = 'application/json';
+        this.options['headers']["Content-Type"] = "application/json";
 
-        if (this.auth.type === 'session')
+        this.tryConnect(parameters)
+    }
+
+    tryConnect(parameters)
+    {
+        if (!this.auth)
         {
-            this.createSession(parameters);
-        } else if (this.auth.type === 'basic') {
-            this.generateBasicAuth(parameters);
+            setTimeout(this.tryConnect, 1000, parameters);
         } else {
+            if (this.auth.type === 'session') return this.createSession(parameters);
+            if (this.auth.type === 'basic')   return this.generateBasicAuth(parameters);
+
             this.onError(1, 0, this.auth.type);
         }
     }
@@ -171,9 +178,9 @@ class JiraClient extends _Request
      * @param {Boolean} [connectTest = false] - Special attribute should use for test connection.
      * @returns {_Response}
      */
-    async search(_jql = "", _startAt = 0, _maxResults = 50, connectTest = false) 
+    async search(_jql = "", _startAt = 0, _maxResults = 50, connectTest = false)
     {
-        let options = 
+        let options =
             {
                 path: "rest/api/2/search",
                 data: {
@@ -229,9 +236,9 @@ class JiraClient extends _Request
      * @param {String} userName - username in jira.
      * @returns {_Response}
      */
-    async deleteUser(userName) 
+    async deleteUser(userName)
     {
-        let options = 
+        let options =
         {
             path: "/rest/api/2/user/?username=" + userName,
         };
@@ -264,9 +271,9 @@ class JiraClient extends _Request
      * @param {(String | Number)} projectKey - project key or id in jira.
      * @returns {_Response}
      */
-    async getProjectRoles(projectKey) 
+    async getProjectRoles(projectKey)
     {
-        let options = 
+        let options =
             {
                 path: `/rest/api/2/project/${projectKey}/role`
             },
@@ -367,36 +374,38 @@ class JiraClient extends _Request
         return resp;
     }
 
+    handleResponse(response, onError)
+    {
+        let fineState = [200, 201, 204];
+
+        if (fineState.indexOf(response.status) === -1)
+        {
+            if (onError) { return onError(response); }
+
+            this.onWarning(3, 2, `\n{\n\tResponse: ${response.status}\n\tDescription:` + JSON.stringify(response));
+            return false;
+
+        } else if (response.errors) {
+            this.onError(2, 1, JSON.stringify(response.errors));
+        }
+
+        return new Promise((resolve) => resolve(response));
+    }
+
     /**
      * Request universal method for Jira Rest Api.
      * @param {Options} options - request header, data and|or other parameters.
-     * @param {String} [method = "get"] - request method(POST, GET ...).
-     * @param {Function} [onCritical = undefined] - function will calling if server return error.
+     * @param {String} [method="get"] - request method(POST, GET ...).
+     * @param {(Function | Boolean)} [onError=false] - function will calling if server return error.
      * @returns {(_Response | Boolean)}
      */
-    async _request(options, method = "get", onCritical = undefined) 
+    async _request(options, method="get", onError=false)
     {
-        let response  = await this.request(options, method),
-            fineState = [200, 201, 204];
+        let response  = await this.request(options, method);
 
-        if (response) 
+        if (response)
         {
-            let message = `\n{\n\tResponese: ${response.status}\n\tDescription:` + JSON.stringify(response.data);
-
-            if (fineState.indexOf(response.status) === -1) 
-            {
-                if (onCritical) {
-                    return onCritical(response);
-                } else {
-                    this.onWarning(3, 2, message);
-
-                    return false;
-                }
-            } else if (response.data.errors) {
-                this.onError(2, 1, JSON.stringify(response.data.errors));
-            }
-
-            return new Promise((resolve) => resolve(response));
+            return this.handleResponse(response, onError);
         } else {
             return this.onError(2, 0, this.options.host || this.options.hostname);
         }

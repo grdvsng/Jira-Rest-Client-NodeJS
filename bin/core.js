@@ -5,6 +5,9 @@
  */
 
 
+const STDGateway = new (require('std.methods.js')["STDGateway"])();
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
 String.formatViaArray = (str, args) =>
 {
 	for (var n=0; n < args.length; n++)
@@ -40,8 +43,8 @@ Object.filter = (obj, filter) =>
 }
 
 
-/** 
- * Interface for InnerError. 
+/**
+ * Interface for InnerError.
  * @type Class
  */
 class InnerError
@@ -98,11 +101,11 @@ class _Logger
      */
 	errorHandler(err, file)
 	{
-		if (err != null) 
+		if (err != null)
 		{
 			console.log(err, file);
 			this.isLog = false;
-		} else {console.log("Log appended!");}
+		}
 	}
 
 	/**
@@ -520,6 +523,14 @@ class _Request extends EventsHandler
 		}
 
 		return parsed;
+	}
+
+	async getAuth(authData={})
+	{
+		authData.username = (authData.username) ? authData.username:await STDGateway.input('username');
+		authData.password = (authData.password) ? authData.password:await STDGateway.getPassword('password');
+
+		return authData;
 	}
 
     /**
