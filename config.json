@@ -1,6 +1,6 @@
 [{
     "client":   null,
-	"log":      "./logs/client.log",
+	"log":      "./logs/default-client-windows.log",
 	"host":     "127.0.0.1",
 	"port":     "8080",
 	"protocol": "http",

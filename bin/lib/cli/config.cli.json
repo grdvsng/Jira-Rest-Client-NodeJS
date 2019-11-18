@@ -1,0 +1,123 @@
+{
+    "search": 
+    {
+        "less": "s", 
+        "help": "search(\n\t[-j=''] - jql query, \n\t[-s=0] - index of first returned item,  \n\t[-m=50] - maximum number of finded items. \n)",
+        "argv": 
+        {
+            "params": [ "-j", "-s", "-m" ],
+            "require": []
+        }
+    },
+
+    "getIsue": 
+    {
+        "less": "gi", 
+        "help": "getIssue(\n\tid - id of searching isue\n)",
+        "argv": 
+        {
+            "params": ["-id"],
+            "require": ["-id"]
+        }
+    },
+
+    "createUser": 
+    {
+        "less": "cu",
+        "help": "createUser(\n\t-ud - special object({'displayName':  'Paul Stamets', 'name': 'mashroomhat'})\n)",
+        "argv": 
+        {
+            "params": ["-ud"],
+            "require": ["-ud"]
+        }
+    },
+
+    "deleteUser": 
+    {
+        "less": "du",
+        "help": "deleteUser(\n\t-un - name in jira\n)",
+        "argv": 
+        {
+            "params": ["-un"],
+            "require": ["-un"]
+        }
+    },
+    
+    "getUser": 
+    {
+        "less": "gu", 
+        "help": "getUser(\n\t-un - name in jira\n) \nreturn JSON with user object.",
+        "argv": 
+        {
+            "params": ["-un"],
+            "require": ["-un"]
+        }
+    },
+
+    "getProjectRoles": 
+    {
+        "less": "gpr", 
+        "help": "getProjectRoles(\n\t-pk - jira project id|key) \nreturn array with all project roles",
+        "argv": 
+        {
+            "params": ["-pk"],
+            "require": ["-pk"]
+        }
+    },
+
+    "getRoleId": 
+    {
+        "less": "gri",
+        "help": "async getRoleId(]\n\t-rk - name of role, \n\t-pk - project key\n)\nreturn role id",
+        "argv": 
+        {
+            "params": ["-rk", "-pk"],
+            "require": ["-rk", "-pk"]
+        }
+    },
+
+    "addUserInProject": 
+    {
+        "less": "auip",
+        "help": "(\n\t -un - name of user or array with names, \n\t-pk - project where push, \n\t-rn - name of role to append for user\n)",
+        "argv": 
+        {
+            "params": ["-un", "-pk", "-rn"],
+            "require": ["-un", "-pk", "-rn"]
+        }
+    },
+
+    "addUserInGroup": 
+    {
+        "less": "auig",
+        "help": "addUserInGroup(\n\t-un - jira user name, \n\t-gn - group were psuh\n)",
+        "argv": 
+        {
+            "params": ["-un", "-gn"],
+            "require": ["-un", "-gn"]
+        }
+    },
+
+    "removeUserFromGroup": 
+    {
+        "less": "rufg",
+        "help": "removeUserFromGroup(\n\t-un - jira user name, \n\t-gn - user remove from group name\n)", 
+        "argv": 
+        {
+            "params": ["-un", "-gn"],
+            "require": ["-un", "-gn"]
+        }
+    },
+
+    "help": 
+    {
+        "less": "h",
+        "help": "help(\n\t [funcName='']\n)"
+    },
+
+    "exit": 
+    {
+        "less": "q",
+        "help": "quit() close applciation"
+    }
+}

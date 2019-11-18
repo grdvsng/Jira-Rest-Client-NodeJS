@@ -101,7 +101,7 @@ class STDGateway
                 { setTimeout(() => { resolve(self.waitResponse.apply(self)) }, 1000);
             });
         } else {
-            return this.getActiveResp(true);
+            return await new Promise(resolve => resolve(this.getActiveResp(true)));
         }
     }
 
@@ -117,7 +117,7 @@ class STDGateway
             rl.close();
         });
 
-        return await this.waitResponse();
+        return await new Promise(resolve => resolve(this.waitResponse()));
     }
 }
 
