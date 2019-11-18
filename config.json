@@ -1,4 +1,5 @@
-{
+[{
+    "client":   null,
 	"log":      "./logs/client.log",
 	"host":     "127.0.0.1",
 	"port":     "8080",
@@ -9,8 +10,8 @@
         "type": "basic",
         "data":
         {
-            "username": "admin",
+            "username": null,
             "password": null
         }
     }
-}
+}]

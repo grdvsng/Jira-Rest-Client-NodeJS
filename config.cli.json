@@ -1,0 +1,132 @@
+{
+    "search": 
+    {
+        "less": "s", 
+        "help": "search(\n\t[-j=''] - jql query, \n\t[-s=0] - index of first returned item,  \n\t[-m=50] - maximum number of finded items. \n)",
+        "argv": 
+        {
+            "params": [ "-j", "-s", "-m" ],
+            "require": []
+        }
+    },
+
+    "getIsue": 
+    {
+        "less": "gi", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "createUser": 
+    {
+        "less": "cu", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "getUser": 
+    {
+        "less": "gu", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "getProjectRoles": 
+    {
+        "less": "gpr", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "getRoleId": 
+    {
+        "less": "gri", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "addUserInProject": 
+    {
+        "less": "auip", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "addUserInGroup": 
+    {
+        "less": "auig", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "removeUserFromGroup": 
+    {
+        "less": "rufg", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "generateBasicAuth": 
+    {
+        "less": "gba", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "deleteUser": 
+    {
+        "less": "du", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "help": 
+    {
+        "less": "h", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    },
+
+    "exit": 
+    {
+        "less": "quit", 
+        "argv": 
+        {
+            "optional": [],
+            "require": []
+        }
+    }
+}

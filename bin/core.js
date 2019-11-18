@@ -5,7 +5,6 @@
  */
 
 
-const STDGateway = new (require('std.methods.js')["STDGateway"])();
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 String.formatViaArray = (str, args) =>
@@ -523,14 +522,6 @@ class _Request extends EventsHandler
 		}
 
 		return parsed;
-	}
-
-	async getAuth(authData={})
-	{
-		authData.username = (authData.username) ? authData.username:await STDGateway.input('username');
-		authData.password = (authData.password) ? authData.password:await STDGateway.getPassword('password');
-
-		return authData;
 	}
 
     /**

@@ -150,7 +150,8 @@ class JiraClient extends _Request
     {
         super(parameters, _InnerErrors);
 
-        this.auth = this.getAuth(parameters.auth);
+        this.auth = parameters.auth;
+
         this.options['headers']['Accept']       = 'application/json';
         this.options['headers']["Content-Type"] = "application/json";
 
