@@ -5,7 +5,7 @@
  */
 
 
-const STDGateway = new (require("../../STDGateway")["STDGateway"])();
+const STDGateway = new (require("./std/stdGateway")["STDGateway"])();
 
 
 class UserInputParser

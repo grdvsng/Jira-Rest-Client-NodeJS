@@ -52,6 +52,28 @@ const _Request = require('./core')['_Request'];
  */
 const _Response = require('./core')['_Response'];
 
+/** 
+ * ADGateway to get user data from active directory
+ * {@link module:./lib/ad/ad.gateway}.
+ * @class
+ * @requires module:./lib/ad/ad.gateway
+ */
+const ADGateway = require("./lib/ad/ad.gateway")["ADGateway"];
+
+/**
+ * Parse response from Active Directory and convert to Jira UserData
+ * @type Function
+ * @param {Object} data - Value to convert.
+ * @returns { name: String, displayName: String, emailAddress: String }
+*/
+function ADProtocol(data)
+{
+    return {
+        'name':         data["sAMAccountName"].trim(),
+        'displayName':  data["displayName"].trim(),
+        'emailAddress': data["mail"].trim()
+    };
+}
 
 /** 
  * Class for use BasicAuth in JiraDev Rest Api. 
@@ -155,7 +177,16 @@ class JiraClient extends _Request
         this.options['headers']['Accept']       = 'application/json';
         this.options['headers']["Content-Type"] = "application/json";
 
-        this.tryConnect(parameters)
+        this.platformLimitations();
+        this.tryConnect(parameters);
+    }
+
+    platformLimitations()
+    {
+        if (process.platform !== 'win32' && process.platform !== 'win64')
+        {
+            this.importUserFromAD = undefined;
+        }
     }
 
     tryConnect(parameters)
@@ -209,6 +240,20 @@ class JiraClient extends _Request
             resp = await this._request(options, "get", false);
 
         return resp;
+    }
+
+    async importUserFromAD(userName)
+    {
+        let userData = ADGateway.searchUser(userName, ADProtocol);
+
+        if (userData.name) 
+        {
+            return await this.createUser(userData);
+        }
+        
+        console.log(`User '${userName}' not found.`);
+        
+        return false;
     }
 
     /**

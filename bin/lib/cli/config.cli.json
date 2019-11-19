@@ -109,6 +109,17 @@
         }
     },
 
+    "importUserFromAD":
+    {
+        "less": "iufad",
+        "help": "importUserFromAD(\n\tsAMAccountName or displayName in AD\n)", 
+        "argv": 
+        {
+            "params": ["-un"],
+            "require": ["-un"]
+        }
+    },
+
     "help": 
     {
         "less": "h",

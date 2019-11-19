@@ -14,4 +14,4 @@ Ready for use
 10. removeUserFromGroup
 
 # Windows Exclusive
-1. Execute user from AD.
+1. Import user from AD.
