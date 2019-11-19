@@ -5,8 +5,7 @@
         "help": "search(\n\t[-j=''] - jql query, \n\t[-s=0] - index of first returned item,  \n\t[-m=50] - maximum number of finded items. \n)",
         "argv": 
         {
-            "params": [ "-j", "-s", "-m" ],
-            "require": []
+            "params": [ "-j", "-s", "-m" ]
         }
     },
 
@@ -16,7 +15,6 @@
         "help": "getIssue(\n\tid - id of searching isue\n)",
         "argv": 
         {
-            "params": ["-id"],
             "require": ["-id"]
         }
     },
@@ -27,7 +25,6 @@
         "help": "createUser(\n\t-ud - special object({'displayName':  'Paul Stamets', 'name': 'mashroomhat'})\n)",
         "argv": 
         {
-            "params": ["-ud"],
             "require": ["-ud"]
         }
     },
@@ -38,7 +35,6 @@
         "help": "deleteUser(\n\t-un - name in jira\n)",
         "argv": 
         {
-            "params": ["-un"],
             "require": ["-un"]
         }
     },
@@ -49,7 +45,6 @@
         "help": "getUser(\n\t-un - name in jira\n) \nreturn JSON with user object.",
         "argv": 
         {
-            "params": ["-un"],
             "require": ["-un"]
         }
     },
@@ -60,7 +55,6 @@
         "help": "getProjectRoles(\n\t-pk - jira project id|key) \nreturn array with all project roles",
         "argv": 
         {
-            "params": ["-pk"],
             "require": ["-pk"]
         }
     },
@@ -71,7 +65,6 @@
         "help": "async getRoleId(]\n\t-rk - name of role, \n\t-pk - project key\n)\nreturn role id",
         "argv": 
         {
-            "params": ["-rk", "-pk"],
             "require": ["-rk", "-pk"]
         }
     },
@@ -82,7 +75,6 @@
         "help": "(\n\t -un - name of user or array with names, \n\t-pk - project where push, \n\t-rn - name of role to append for user\n)",
         "argv": 
         {
-            "params": ["-un", "-pk", "-rn"],
             "require": ["-un", "-pk", "-rn"]
         }
     },
@@ -93,7 +85,6 @@
         "help": "addUserInGroup(\n\t-un - jira user name, \n\t-gn - group were psuh\n)",
         "argv": 
         {
-            "params": ["-un", "-gn"],
             "require": ["-un", "-gn"]
         }
     },
@@ -104,7 +95,6 @@
         "help": "removeUserFromGroup(\n\t-un - jira user name, \n\t-gn - user remove from group name\n)", 
         "argv": 
         {
-            "params": ["-un", "-gn"],
             "require": ["-un", "-gn"]
         }
     },
@@ -115,7 +105,6 @@
         "help": "importUserFromAD(\n\tsAMAccountName or displayName in AD\n)", 
         "argv": 
         {
-            "params": ["-un"],
             "require": ["-un"]
         }
     },

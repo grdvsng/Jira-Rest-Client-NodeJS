@@ -26,6 +26,16 @@ class UserInputParser
 		}
 	}
 
+	getCommandCfg(data)
+	{
+		let curdata = data || { params:[], require:[] };
+
+		curdata.require = curdata.require || [];
+		curdata.params  = curdata.params  || curdata.require;
+
+		return curdata;
+	}
+
 	getCommand(key)
 	{
 		let command; 
@@ -37,7 +47,7 @@ class UserInputParser
 
 		if (!command) throw `Key: '${key}' not found.`;
 
-		command.cfg = command.cfg || { params:[], require:[] };
+		command.cfg = this.getCommandCfg(command.cfg);
 
 		return command;
 	}
@@ -216,7 +226,7 @@ class RestClientCLI extends UserInputParser
 		} else if (methodParams.method.name === 'exit') { 
 			process.exit(1); 
 		} else { 
-			// return await this.callClientMethod(methodParams.method.name, methodParams.argv); 
+			//return await this.callClientMethod(methodParams.method.name, methodParams.argv); 
 		}
 	}
 
