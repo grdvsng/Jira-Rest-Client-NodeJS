@@ -4,6 +4,8 @@
  * @version 0.1.0
  */
 
+const querystring = require('querystring');
+
 /**
  * Encode string to base64 format.
  * @type Function
@@ -171,14 +173,27 @@ class JiraClient extends _Request
     constructor(parameters)
     {
         super(parameters, _InnerErrors);
-
+        
+        this.setBasicHeaders(this.options);
         this.auth = parameters.auth;
+    }
 
-        this.options['headers']['Accept']       = 'application/json';
-        this.options['headers']["Content-Type"] = "application/json";
-
+    async run()
+    {
+        
+        this.setBasicHeaders(this.options);
         this.platformLimitations();
-        this.tryConnect(parameters);
+        await this.tryConnect(this.options);
+    }
+
+    setBasicHeaders(parameters)
+    {
+        parameters['headers'] = parameters['headers'] || {};
+
+        parameters['headers']['Accept']       = 'application/json';
+        parameters['headers']["Content-Type"] = "application/json";
+
+        return parameters;
     }
 
     platformLimitations()
@@ -189,17 +204,13 @@ class JiraClient extends _Request
         }
     }
 
-    tryConnect(parameters)
+    async tryConnect(parameters)
     {
-        if (!this.auth)
-        {
-            setTimeout(this.tryConnect, 1000, parameters);
-        } else {
-            if (this.auth.type === 'session') return this.createSession(parameters);
-            if (this.auth.type === 'basic')   return this.generateBasicAuth(parameters);
 
-            this.onError(1, 0, this.auth.type);
-        }
+        if (this.auth.type === 'session') return await this.createSession(parameters);
+        if (this.auth.type === 'basic')   return await this.generateBasicAuth(parameters);
+
+        this.onError(1, 0, this.auth.type);
     }
 
     /**
@@ -286,7 +297,7 @@ class JiraClient extends _Request
     {
         let options =
         {
-            path: "/rest/api/2/user/?username=" + userName,
+            path: "/rest/api/2/user/?" + querystring.stringify({username: userName}),
         };
 
         let resp = await this._request(options, "DELETE", false);
@@ -305,7 +316,7 @@ class JiraClient extends _Request
     {
         let options =
             {
-                path: `/rest/api/2/user/?username=${userName}`,
+                path: `/rest/api/2/user/?` + querystring.stringify({username: userName}),
             },
             resp = await this._request(options, "get", false);
 
@@ -321,7 +332,7 @@ class JiraClient extends _Request
     {
         let options =
             {
-                path: `/rest/api/2/project/${projectKey}/role`
+                path: `/rest/api/2/project/${querystring.escape(projectKey)}/role`
             },
             resp = await this._request(options, "GET", false);
 
@@ -364,7 +375,7 @@ class JiraClient extends _Request
 
         let options = 
             {
-            path: `/rest/api/2/project/${projectKey}/role/${roleID}`,
+            path: `/rest/api/2/project/${querystring.escape(projectKey)}/role/${querystring.escape(roleID)}`,
             data: 
             {
                 "user": (typeof userNameOrArrayWithNames === 'string') ? [userNameOrArrayWithNames] : userNameOrArrayWithNames,
@@ -388,7 +399,7 @@ class JiraClient extends _Request
     {
         let options = 
             {
-                path: '/rest/api/2/group/user?groupname=' + groupName,
+                path: '/rest/api/2/group/user?' + querystring.stringify({groupname: groupName}),
                 data: 
                 {
                     "name": userName
@@ -411,7 +422,7 @@ class JiraClient extends _Request
     {
         let options = 
             {
-                "path": `/rest/api/2/group/user?groupname=${groupName}&username=${userName}`
+                "path": `/rest/api/2/group/user?${querystring.stringify({groupname: groupName, username: userName})}`
             },
             resp = await this._request(options, "DELETE", false);
 

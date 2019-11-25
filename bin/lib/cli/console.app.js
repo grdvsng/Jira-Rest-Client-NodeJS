@@ -4,8 +4,7 @@
  * @version 1.0.0
  */
 
-
-const STDGateway = new (require("./std/stdGateway")["STDGateway"])();
+const os_path = require('path');
 
 
 class UserInputParser
@@ -130,7 +129,7 @@ class RestClientCLI extends UserInputParser
 		super();
 		this.config = config;
 
-		// this.connectConfigs();
+		this.connectConfigs().then(() => this.mainLoop());
 	}
 
 	mergeSupported()
@@ -144,26 +143,33 @@ class RestClientCLI extends UserInputParser
 		}
 	}
 
-	async connectConfigs()
+	connectConfigs()
 	{
 		let auth = this.config.auth;
+		
+		auth      = (auth) ? auth:{"type": "basic"};
+		auth.data = (auth.data) ? auth.data:{};
+		
+		return new Promise (async (resolve) => 
+		{
+			auth.data.username = (auth.data.username) ? auth.data.username:await this.getCliData("text", "username > ");
+			auth.data.password = (auth.data.password) ? auth.data.password:await this.getCliData("pass", "password > ");	
 
-		auth               = (auth) ? auth:{"type": "basic"};
-		auth.data          = (auth.data) ? auth.data:{};
-		auth.data.username = (this.config.username) ? this.config.username:await STDGateway.input("username");
-		auth.data.password = (this.config.password) ? this.config.password:await STDGateway.getPassword("password");	
-		this.client        = await this.setClient();
+			this.client = await this.setClient();
 
-		this.mergeSupported();
+			resolve();
+		});
 	}
 
 	async setClient()
 	{
-		let client = (this.config.client) ? require(this.config.client)["JiraClient"]:require("../../JiraClient")["JiraClient"];
-		
+		let cls = (this.config.client) ? require(this.config.client)["JiraClient"]:require("../../JiraClient")["JiraClient"];
+
 		delete this.config.client;
 
-		return await new client();
+		let client = new cls(this.config);
+		
+		await client.run();	
 	}
 
 	getMethodHelp(method)
@@ -191,12 +197,12 @@ class RestClientCLI extends UserInputParser
 	{
 		let help;
 
-		if (methodParams.argv[0]) 
+		if (methodParams.method.name === 'help' && methodParams.argv[0]) 
 		{
 			help = this.getMethodHelp(this.getCommand(methodParams.argv[0]));
-		} else {
-			help = this.getHelpForAllSuportMethods();
-		}
+		} else if (methodParams.argv[0]) {
+			help = this.getMethodHelp(this.getCommand(methodParams.method.name));
+		} else { help = this.getHelpForAllSuportMethods(); }
 
 		console.log(help);
 	}
@@ -226,15 +232,37 @@ class RestClientCLI extends UserInputParser
 		} else if (methodParams.method.name === 'exit') { 
 			process.exit(1); 
 		} else { 
-			//return await this.callClientMethod(methodParams.method.name, methodParams.argv); 
+			return await this.callClientMethod(methodParams.method.name, methodParams.argv); 
 		}
+	}
+
+	getCliData(_type='text', prompt='$cli_jira> ')
+	{
+		let data = '',
+		    pid  = require('child_process').spawn(`py`, [ `${__dirname}/cli.py`, _type ], {stdio: [0, 1, 2]});
+		
+		process.stdout.write(prompt);
+
+		return new Promise(resolve => pid.on('close', code => resolve(this.readStdout(_type !== 'text'))));
+	}
+
+	readStdout(encode=false)
+	{
+		let fs   = require('fs'),
+			data = fs.readFileSync("_stdout", 'utf8');
+
+		if (encode) data = Buffer.from(data.substring(2, data.length-1), 'base64').toString();
+		
+		fs.unlinkSync("_stdout");
+		
+		return data;
 	}
 
 	async mainLoop()
 	{
 		try 
 		{
-			let input        = await STDGateway.input("$jiraCLI"),
+			let input        = await this.getCliData(),
 				methodParams = this.parseUserInput(input);
 			await this.compileParams(methodParams);
 
@@ -254,7 +282,5 @@ if (argv.length > 0)
 	if (config)
 	{
 		const CLI = (new RestClientCLI(config));
-		CLI.mainLoop();
-
 	} else { throw `Config by index ${argv[0]} not found!`; }
 }

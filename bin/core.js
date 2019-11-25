@@ -117,7 +117,7 @@ class _Logger
 		var time = "TimeStamp: " + (new Date()) + "\n",
 			data = time + msg + "\n" + '-'.repeat(time.length) + "\n";
 
-		this.fso.appendFile(this.logFile, data, this.errorHandler);
+		this.fso.appendFile(this.logFile, data, err => (this.errorHandler.apply(this, [err])));
 	}
 }
 
@@ -338,7 +338,8 @@ class _Request extends EventsHandler
 			port:     parameters.port,
 			host:     parameters.host,
 			hostname: parameters.hostname,
-			headers:  parameters.headers
+			headers:  parameters.headers,
+			postfix:  parameters.postfix || ""
 		}, function(a) {return a != undefined});
 	}
 
@@ -495,7 +496,7 @@ class _Request extends EventsHandler
  		this.activeResponse = undefined;
 
  		options.method = (options.method || method).toUpperCase();
- 		options.path   = "/" + options.path.replace(/^[\/\/]|^.\//g, "");
+ 		options.path   = this.options.postfix + "/" + options.path.replace(/^[\/\/]|^.\//g, "");
 		resp           = await this[options.method](options);
 
 		if (!resp) return this.onCoreError(`Server: '${this.baseUrl}', not available...`);

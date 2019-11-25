@@ -3,15 +3,16 @@
 	"log":      "./logs/default-client-windows.log",
 	"host":     "127.0.0.1",
 	"port":     "8080",
-	"protocol": "http",
+    "protocol": "http",
+    "postfix":  null,
 
     "auth":
     {
         "type": "basic",
         "data":
         {
-            "username": null,
-            "password": null
+            "username": "admin",
+            "password": "qwerty1234"
         }
     }
 }]

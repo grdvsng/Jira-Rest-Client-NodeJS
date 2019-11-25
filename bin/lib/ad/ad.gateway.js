@@ -10,41 +10,24 @@ class ADGateway
 {
     static async search(query, converter)
     {
-        var self = this;
+        return new Promise((resolve, reject) => 
+        {
+            child_process.exec(`powershell -f "${__dirname}/adqs.ps1" "${query}"`, (error, stdout) =>
+            
+            {  
+                if (error) reject(new Error(error.code));
         
-        await child_process.exec(`powershell -f "${__dirname}/adqs.ps1" "${query}"`, (error, stdout) =>
-        {  
-            if (error) throw new Error(error.code);
-    
-            self.actualData = stdout;
-        }); 
-
-        let resp = await this.wait_response();
-        this.actualData = undefined;
-
-        return new Promise(resolve => resolve((converter) ? converter(resp):resp));
+                resolve((converter) ? converter(stdout):stdout);
+            }); 
+        });
     }
 
     static async searchUser(userName, converter)
     { 
         var resp = await this.search(`displayName = '${userName}' or sAMAccountName = '${userName}'`, converter);
 
-        return new Promise(resolve => resolve(resp));
+        return resp;
     }
-
-    static async wait_response()
-	{
-		if (!this.actualData)
-		{
-			await new Promise(resolve => {setTimeout(resolve, 1000);});
-
-			return this.wait_response();
-		}
-        
-        let data = this.actualData;
-
-		return new Promise(resolve => resolve(JSON.parse(data)));
-	}
 }
 
 
