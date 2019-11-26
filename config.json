@@ -1,18 +1,16 @@
 [{
     "client":   null,
 	"log":      "./logs/default-client-windows.log",
-	"host":     "127.0.0.1",
-	"port":     "8080",
-    "protocol": "http",
-    "postfix":  null,
+    "hostname": "theminor.atlassian.net",
+    "protocol": "https",
 
     "auth":
     {
         "type": "basic",
         "data":
         {
-            "username": "admin",
-            "password": "qwerty1234"
+            "username": null,
+            "password": null
         }
     }
 }]

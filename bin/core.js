@@ -332,15 +332,18 @@ class _Request extends EventsHandler
 	{
 		super(ClientErrors, parameters.log);
 
-		this.http    = require(parameters['protocol'] || "http");
-		this.baseUrl = this.generateBaseUrl(parameters),
+		this.http    = require(parameters.protocol || "http");
+		this.baseUrl = this.generateBaseUrl(parameters);
+		this.prefix  = (parameters.prefix) ? `/${parameters.prefix}`:"";
 		this.options = Object.filter({
 			port:     parameters.port,
 			host:     parameters.host,
 			hostname: parameters.hostname,
-			headers:  parameters.headers,
-			postfix:  parameters.postfix || ""
+			headers:  parameters.headers
+			//, protocol:  parameters.protocol
 		}, function(a) {return a != undefined});
+
+		this.options.agent = new (this.http.Agent)({ keepAlive: true });
 	}
 
 	/**
@@ -361,9 +364,14 @@ class _Request extends EventsHandler
 	 * @param {String} hostname - server host name.
 	 * @returns {String}
 	 */
-	generateBasicUrlByHostname(protocol, hostname)
+	generateBasicUrlByHostname(protocol, hostname, postfix)
 	{
-		return `${protocol}://${hostname}`;
+		if (!postfix)
+		{
+			return `${protocol}://${hostname}`;
+		} else {
+			return `${protocol}://${hostname}/${postfix}`;
+		}
 	}
 
 	/**
@@ -377,12 +385,12 @@ class _Request extends EventsHandler
 
 		if (parameters['hostname'])
 		{
-			return this.generateBasicUrlByHostname(parameters['protocol'], parameters['hostname']);
+			return this.generateBasicUrlByHostname(parameters['protocol'] || "http", parameters['hostname'], parameters['postfix']);
 		}
 
 		if (parameters['host'])
 		{
-			return this.generateBasicUrlByHostAndPort(parameters['protocol'], parameters['host'], parameters['port']);
+			return this.generateBasicUrlByHostAndPort(parameters['protocol'] || "http", parameters['host'], parameters['port']);
 		}
 	}
 
@@ -393,16 +401,19 @@ class _Request extends EventsHandler
      */
  	async GET(options)
  	{
- 		let self = this;
+		this.connectDefaultAttrsOnRequest(options);
+		
+		return new Promise(async resolve => 
+		{
+			let req = await this.http.request(options, async response => 
+			{
+				let data = await this.responseParser(response);
 
- 		this.connectDefaultAttrsOnRequest(options);
-
- 		let req = await this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
-    	req.end();
-
-    	let resp = await this.waitingResponse();
-
-    	return new Promise((resolve) => resolve(resp));
+				resolve(data);
+			}); 
+			console.log(options)
+			req.end();
+		});
  	}
 
  	/**
@@ -465,22 +476,24 @@ class _Request extends EventsHandler
      */
  	async POST(options)
  	{
- 		let data = (options.data) ? JSON.stringify(options.data):"",
- 			self = this,
- 			req;
+ 		let data = (options.data) ? JSON.stringify(options.data):"";
 
  		delete options.data;
 
- 		await this.connectDefaultAttrsOnRequest(options);
+ 		this.connectDefaultAttrsOnRequest(options);
 
- 		req = this.http.request(options, (response) => {self.responseParser.apply(self, [response]);});
-
-    	req.write(data);
-    	req.end();
-
-    	let resp = await this.waitingResponse();
-
-    	return new Promise((resolve) => resolve(resp));
+		return new Promise(async resolve => 
+		{
+			let req = await this.http.request(options, async response => 
+			{
+				let data = await this.responseParser(response);
+				
+				resolve(data);
+			});
+			
+			req.write(data);
+			req.end();
+		});
  	}
 
     /**
@@ -492,11 +505,9 @@ class _Request extends EventsHandler
     async request(options, method="GET")
  	{
  		let resp;
-
- 		this.activeResponse = undefined;
-
+		 
  		options.method = (options.method || method).toUpperCase();
- 		options.path   = this.options.postfix + "/" + options.path.replace(/^[\/\/]|^.\//g, "");
+ 		options.path   = (this.prefix  + options.path.replace(/^[\/\/]|^.\//g, "")).trim();
 		resp           = await this[options.method](options);
 
 		if (!resp) return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
@@ -529,40 +540,24 @@ class _Request extends EventsHandler
      * Parse response from server and convert to _Response(return in self.activeResponse);
      * @returns {void}
      */
- 	async responseParser (response)
+ 	responseParser (response)
  	{
- 		let self   = this,
- 			errors = [],
+ 		let errors = [],
 			data   = [];
+		
+		response.setEncoding('utf8');
 
- 		response.setEncoding('utf8');
-		response.on('error',(er) => {errors.push(er)})
-		response.on('data', (c)  => {data.push(c);});
-		response.on('end',  ()  => {
-			self.activeResponse = new _Response(
-				response.statusCode,
-				this.innerProtocol(data),
-				this.innerProtocol(errors)
-		)});
-    }
+		response.on('error',(er) => errors.push(er));
+		response.on('data', (c)  => data.push(c));
 
-    /**
-     * Wait response from Server.
-     * @returns {void}
-     */
-    async waitingResponse()
-	{
-		let self = this;
-
-		if (!self.activeResponse)
+		return new Promise(resolve => 
 		{
-			await new Promise(resolve => {setTimeout(resolve, 1000);});
-
-			this.waitingResponse(self);
-		}
-
-		return self.activeResponse;
-	}
+			response.on('end',  ()  => 
+			{
+				resolve(new _Response(response.statusCode, this.innerProtocol(data), this.innerProtocol(errors)));
+			});
+		});
+    }
 }
 
 module.exports =

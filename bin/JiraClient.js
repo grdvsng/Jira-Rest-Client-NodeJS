@@ -103,8 +103,8 @@ class BasicAuth extends _Request
         let b64data = "Basic " + btoa(this.auth.username + ":" + this.auth.password);
 
         this.options['headers']['Authorization'] = b64data;
-
-        let result = await this.request({ 'path': '/rest/api/2/user/?username=admin' }, 'get');
+  
+        let result = await this.request({ 'path': '/rest/api/2/issue/createmeta' }, 'get');
 
         if (result.status !== 200) return this.onError(3, 2, JSON.stringify(result));
 
@@ -190,8 +190,8 @@ class JiraClient extends _Request
     {
         parameters['headers'] = parameters['headers'] || {};
 
-        parameters['headers']['Accept']       = 'application/json';
-        parameters['headers']["Content-Type"] = "application/json";
+        parameters['headers']['Accept']            = 'application/json';
+        parameters['headers']["Content-Type"]      = "application/json";
 
         return parameters;
     }
@@ -246,7 +246,7 @@ class JiraClient extends _Request
     {
         let options =
             {
-                path: 'rest/api/2/issue/?id=' + issueID
+                path: '/rest/api/2/issue/?id=' + issueID
             },
             resp = await this._request(options, "get", false);
 
