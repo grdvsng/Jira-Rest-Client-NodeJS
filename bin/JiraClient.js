@@ -30,13 +30,6 @@ const btoa = (data) => { return Buffer.from(data).toString('base64') };
  */
 const atob = (data) => { return Buffer.from(data, 'ascii').toString('utf8') };
 
-/**
- * Interface for InnerError.
- * {@link module:core.js}.
- * @class
- * @requires module:core.js
- */
-const InnerError = require('./core')['InnerError'];
 
 /**
  * Class for use universaL requests methods.
@@ -45,6 +38,8 @@ const InnerError = require('./core')['InnerError'];
  * @requires module:core.js
  */
 const _Request = require('./core')['_Request'];
+
+const CoreEvent = require('./core')['CoreEvent'];
 
 /** 
  * Parsed response from Jira
@@ -89,8 +84,9 @@ class BasicAuth extends _Request
      * @param {Object} authData - Username and password.
      * @returns {void}
      */
-    constructor(parameters, authData) {
-        super(parameters, _InnerErrors);
+    constructor(parameters, authData) 
+    {
+        super(parameters);
 
         this.auth = authData;
     }
@@ -99,15 +95,19 @@ class BasicAuth extends _Request
      * Generate Authorization for Headers and test connection (via request).
      * @returns {String}
      */
-    async create() {
+    async create() 
+    {
         let b64data = "Basic " + btoa(this.auth.username + ":" + this.auth.password);
-
+        
         this.options['headers']['Authorization'] = b64data;
   
-        let result = await this.request({ 'path': '/rest/api/2/issue/createmeta' }, 'get');
+        let result = await this.request({ 'path': '/rest/api/2/user/?username=admin' }, 'get');
 
-        if (result.status !== 200) return this.onError(3, 2, JSON.stringify(result));
-
+        if (result.status != 200)
+        {
+            this.logger.append(new CoreEvent('Error', 'Authorization Error', `Auth response: ${JSON.stringify(result || {})}`));
+        }
+ 
         return b64data;
     }
 }
@@ -138,21 +138,17 @@ class Session extends _Request
      */
     async create()
     {
-        let self = this,
-            result = await this.request({
+        let result = await this.request({
                 "path": "/rest/auth/1/session",
                 "data": this.authData,
             }, "post");
 
-        if (result.status !== 200) {
-            return this.onError(3, 2, JSON.stringify(result));
-        } else {
-            this.name = result.data.session.name;
-            this.value = result.data.session.value;
-            this.cookie = this.name + '=' + this.value;
 
-            return this.cookie;
-        }
+        this.name = result.data.session.name;
+        this.value = result.data.session.value;
+        this.cookie = this.name + '=' + this.value;
+
+        return this.cookie;
     }
 }
 
@@ -172,26 +168,26 @@ class JiraClient extends _Request
      */
     constructor(parameters)
     {
-        super(parameters, _InnerErrors);
+        super(parameters);
         
         this.setBasicHeaders(this.options);
         this.auth = parameters.auth;
-    }
 
-    async run()
-    {
-        
         this.setBasicHeaders(this.options);
         this.platformLimitations();
-        await this.tryConnect(this.options);
+        
+        this.tryConnect(this.setBasicHeaders(parameters)).then(() => 
+        {
+            this.logger.append(new CoreEvent('Info', 'Authorization', `Successful authorization!`));
+        });
     }
 
     setBasicHeaders(parameters)
     {
         parameters['headers'] = parameters['headers'] || {};
 
-        parameters['headers']['Accept']            = 'application/json';
-        parameters['headers']["Content-Type"]      = "application/json";
+        parameters['headers']['Accept']       = 'application/json';
+        parameters['headers']["Content-Type"] = "application/json";
 
         return parameters;
     }
@@ -283,8 +279,6 @@ class JiraClient extends _Request
 
         let resp = await this._request(options, "post", false);
 
-        if (resp) this.onUserCreated(userData.username);
-
         return resp;
     }
 
@@ -301,8 +295,6 @@ class JiraClient extends _Request
         };
 
         let resp = await this._request(options, "DELETE", false);
-
-        if (resp) this.onUserDeleted(userName);
 
         return resp;
     }
@@ -407,8 +399,6 @@ class JiraClient extends _Request
             },
             resp = await this._request(options, "post", false);
 
-        if (resp) this.onUserAddedInGroup(userName, groupName);
-
         return resp;
     }
 
@@ -426,8 +416,6 @@ class JiraClient extends _Request
             },
             resp = await this._request(options, "DELETE", false);
 
-        if (resp) this.onUserRemovedFromGroup(userName, groupName);
-
         return resp;
     }
 
@@ -437,8 +425,6 @@ class JiraClient extends _Request
 
         if (fineState.indexOf(response.status) === -1)
         {
-            if (onError) { return onError(response); }
-
             this.onWarning(3, 2, `\n{\n\tResponse: ${response.status}\n\tDescription:` + JSON.stringify(response));
             return false;
 
@@ -478,8 +464,6 @@ class JiraClient extends _Request
         let basic = new BasicAuth(parameters, this.auth.data);
 
         this.options['headers']['Authorization'] = await basic.create();
-
-        this.onAuth(this.auth.data.username, 'Basic');
     }
 
     /**
@@ -492,44 +476,8 @@ class JiraClient extends _Request
         let session = new Session(parameters, this.auth.data);
 
         this.options['headers']['cookie'] = await session.create();
-
-        this.onAuth(this.auth.data.username, 'Session');
     }
 }
-
-
-/**
- * Application InnerErrors Array.
- * @type Array.<InnerError>
- * @constant
- */
-const _InnerErrors = [
-    new InnerError(
-        'Authorization Errors',
-        [0],
-        ["Application will close, server response {0}.\nResponse: {1}"]
-    ), new InnerError(
-        'Core Errors',
-        [0],
-        ["Sorry, auth: {0}, not supported now."]
-    ), new InnerError(
-        'server Errors',
-        [0, 2],
-        [
-            "Haven't response from server: '{0}'.",
-            "Server return errors: '{0}'.",
-            "Test request return: '{0}', check your configuration.\nData: '{1}'."
-        ]
-    ), new InnerError(
-        'Jira Errors',
-        [2],
-        [
-            "Parameter(s): '{0}' is required.",
-            "Auth error, check your username and password.\nServer response: {0}",
-            "Bad Response!\nDescription: \n{0}.",
-            "Can't find role id by value: '{0}', projectName: '{1}'."
-        ]
-    )];
 
 
 module.exports =

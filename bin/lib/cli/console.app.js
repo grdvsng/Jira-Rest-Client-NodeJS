@@ -238,8 +238,7 @@ class RestClientCLI extends UserInputParser
 
 	getCliData(_type='text', prompt='$cli_jira> ')
 	{
-		let data = '',
-		    pid  = require('child_process').spawn(`py`, [ `${__dirname}/cli.py`, _type ], {stdio: [0, 1, 2]});
+		let pid  = require('child_process').spawn(`py`, [ `${__dirname}/cli.py`, _type ], {stdio: [0, 1, 2]});
 		
 		process.stdout.write(prompt);
 

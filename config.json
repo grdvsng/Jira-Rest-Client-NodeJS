@@ -1,6 +1,5 @@
 [{
-    "client":   null,
-	"log":      "./logs/default-client-windows.log",
+	"log":      "./logs/default-client-windows.js",
     "hostname": "theminor.atlassian.net",
     "protocol": "https",
 
@@ -9,8 +8,8 @@
         "type": "basic",
         "data":
         {
-            "username": null,
-            "password": null
+            "username": "cvbn12120@gmail.com",
+            "password": "47rjqw8jHloh4zohupFCA7F3"
         }
     }
 }]

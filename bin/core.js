@@ -6,6 +6,8 @@
 
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+const os_path = require("path");
+
 
 String.formatViaArray = (str, args) =>
 {
@@ -42,25 +44,123 @@ Object.filter = (obj, filter) =>
 }
 
 
-/**
- * Interface for InnerError.
- * @type Class
- */
-class InnerError
+function HTML_LOG()
 {
-    /**
-     * Create new InnerError.
-     * @param {String}         type     - Type of Error.
-     * @param {Array.<Number>} critical - Array with index of message from InnerError.messages with criticale system error.
-     * @param {Array.<String>} messages - Array with Error description.
-     * @returns {void}
-     */
-    constructor(type, critical, messages)
-    {
-        this.type     = type;
-        this.critical = critical;
-        this.messages = messages;
-    }
+	var self = this;
+
+	this.__init__ = function()
+	{
+		window.onload = this.onload;
+	}
+
+	this.generateTable = function()
+	{
+		var table = document.createElement('table');
+
+		table.style["border-collapse"] = "separate";
+		table.style["border-spacing"]  = "0px";
+
+		return table;
+	}
+
+	this.generateCell = function(value, clsName, cellEl)
+	{
+		var td = document.createElement(cellEl || 'td');
+			
+		td.innerHTML         = value;
+		td.className         = clsName;
+		td.style.border      = "1px solid black";
+		td.style.padding     = "5px";
+
+		return td;
+	}
+
+	this.generateRow = function(data, rowEl, cellEl)
+	{
+
+		var row = document.createElement(rowEl || "tr");
+
+		for (var key in data)
+		{
+			var td = this.generateCell(data[key], key, cellEl);
+
+			row.appendChild(td);
+		}
+
+		return row;
+	}
+	
+	this.generateHead = function(data)
+	{
+		var head = {},
+			row;
+
+		for (var key in data) head[key] = key.toUpperCase();
+	
+		row                  = this.generateRow(head, 'thead', 'th');
+		row.style.background = "orange";
+		row.className        = "table-head";
+
+		return row;
+	}
+
+	this.generateFilter = function()
+	{
+		return `
+		<input 
+			style="border: none"
+			onkeyup="
+			var childs = document.getElementsByClassName(this.parentNode.className);
+
+			for (var n=0; n < childs.length; n++)
+			{
+				var node = childs[n];
+			
+				if (!node.innerHTML.match(new RegExp(this.value, 'gi')) && node !== this.parentNode && node.parentNode.className !== 'table-head')
+				{
+					node.parentNode.style.display = 'none';
+				} else {
+					node.parentNode.style.display = 'table-row';
+				}
+			}
+			"
+		>
+		`
+	}
+
+	this.generateFilters = function(data)
+	{
+		var head = {},
+			row;
+
+		for (var key in data) head[key] = this.generateFilter();
+	
+		row = this.generateRow(head);
+
+		return row;
+	}
+
+	this.onload = function()
+	{
+		var tbl = generateTable();
+
+		for (var n=0; n < TABLE.length; n++)
+		{
+			var row = this.generateRow(TABLE[n]);
+			
+			if (n === 0) 
+			{
+				tbl.appendChild(this.generateHead(TABLE[n]));
+				tbl.appendChild(this.generateFilters(TABLE[n]));
+			}
+
+			tbl.appendChild(row);
+		}
+
+		document.body.appendChild(tbl);
+	}
+
+	return this.__init__();
 }
 
 
@@ -76,34 +176,66 @@ class _Logger
      */
 	constructor(logPath)
 	{
-		let self = this;
-
-		this.fso   = require('fs');
-		this.isLog = logPath != undefined;
-
-		if (this.isLog)
+		this.table = [];
+		this.log   = logPath;
+		
+		if (this.log)
 		{
-			if (!this.fso.existsSync(logPath))
-			{
-				this.fso.open(logPath, 'w', this.errorHandler);
-			}
-
-			this.logFile = logPath;
+			this.generateLogFile();
+			this.generateHTMLLogFile();
 		}
 	}
 
-	/**
-     * FSO error parse.
-     * @param {(Error | null)} err - FSO error.
-     * @param {file} file - file that FSO using.
-     * @returns {void}
-     */
-	errorHandler(err, file)
+	_generateHTMLLogFile(filePath)
 	{
-		if (err != null)
+		let content = `
+			<html>
+				<head>
+					<title>${os_path.basename(this.log).replace(os_path.extname(this.log), "")}</title>
+					<script src="${"./" + os_path.basename(this.log)}"></script>
+					<script> ${HTML_LOG + ""}; HTML_LOG() </script>
+		`;
+
+		this.fso.writeFileSync(filePath, content);
+	}
+
+	generateHTMLLogFile()
+	{
+		let _file = os_path.join(os_path.dirname(this.log), os_path.basename(this.log).replace(new RegExp(os_path.extname(this.log), 'gi'), ".html"));
+		
+		if (!this.fso.existsSync(_file))
 		{
-			console.log(err, file);
-			this.isLog = false;
+			this._generateHTMLLogFile(_file);
+		}
+	}
+
+	generateLogFile()
+	{
+		this.fso = require('fs');
+
+		if (!this.fso.existsSync(this.log))
+		{ 
+			this.fso.open(this.log, 'w', (err, data) => {});
+			this.rewright();
+		}
+		
+		this.table = require(this.log)["TABLE"];
+	}
+
+	rewright()
+	{
+		let data = `\rvar TABLE = ${JSON.stringify(this.table)}; \n\nmodule.exports ={"TABLE": TABLE}`;
+
+		this.fso.writeFileSync(this.log, data, 'utf8');
+	}
+
+	parseEvent(ev)
+	{
+		if (ev.type === 'Error')
+		{
+			throw new Error(ev.toLine());
+		} else {
+			console.log(ev.toLine());
 		}
 	}
 
@@ -112,182 +244,46 @@ class _Logger
      * @param {String} msg - data to write.
      * @returns {void}
      */
-	logAppend(msg)
+	append(ev)
 	{
-		var time = "TimeStamp: " + (new Date()) + "\n",
-			data = time + msg + "\n" + '-'.repeat(time.length) + "\n";
+		this.table.push(ev.toNode());
 
-		this.fso.appendFile(this.logFile, data, err => (this.errorHandler.apply(this, [err])));
+		if (this.log) this.rewright();
+		
+		this.parseEvent(ev);
 	}
 }
 
 
 /**
  * Application events handler.
- * @exetends _Logger
  */
-class EventsHandler extends _Logger
+class CoreEvent
 {
-	/**
-     * Generate EventsHandler parameters.
-     * @param {Array.<InnerError>} errorsDiction - Array of client module special errors.
-     * @param {String} logPath - file for write log.
-     * @returns {void}
-     */
-	constructor(errorsDiction, logPath)
+	constructor(event_type, event_title, event_description) 
 	{
-		super(logPath);
-
-		this.errors =  errorsDiction;
+		this.type        = event_type;
+		this.title       = event_title;
+		this.description = event_description;
+		this.userName    = require("os").userInfo().username;
 	}
 
-	/**
-     * Generate EventsHandler parameters.
-     * @param {String} MessageType - Type of message(Error || Info ...).
-     * @param {String} Desription - Event basic information.
-     * @param {String} [Event = "None"] - Event type(look down).
-     * @returns {void}
-     */
-	_logWrite(MessageType, Desription, Event="None")
+	toNode()
 	{
-		let data = `\nMessageType: ${MessageType}\nEvent: ${Event}\nDesription: \n\t${Desription}`;
-
-		this.logAppend(data);
+		return {
+			type:        this.type,
+			title:       this.title,
+			description: this.description,
+			user:        this.userName,
+			time:        new Date().toISOString()
+		};
 	}
 
-	/**
-     * Generate EventsHandler parameters.
-     * @param {String} parameters - connection parameters.
-     * @returns {(Object | Error)}
-     */
-	onServerConnection(parameters)
+	toLine()
 	{
-		if (parameters['hostname'] || (parameters['host'] && parameters['port']))   
-		{
-			return parameters;
-		} else if (!parameters['hostname'] || (!parameters['host'] || !parameters['port'])) {
-			this.onCoreError(`Connection parameters are Empty, please check examples of connect parameters`);
-		} else {
-			this.onCoreError(`For connection by host and port all property are require.`);
-		}
-	}
+		let line = "-".repeat(this.title.length * 2);
 
-	/**
-     * Write.log, print information, ...
-     * @param {Number} typeID - Index of InnerError in this.errors.
-     * @param {Number} msgID - Index of Message(to print) in this.errors['messages'].
-     * @returns {void}
-     */
-	onWarning(typeID, msgID)
-	{
-		let erType = this.errors[typeID],
-			title  = erType.type,
-			msg    = String.formatViaArray(erType['messages'][msgID], Array.from(arguments).slice(2,));
-
-		console.warn(msg);
-
-		if (this.isLog) this._logWrite('Warning', msg, title);
-	}
-
-	/**
-     * First user connection event...
-     * @param {String} userName - connected user name.
-     * @param {String} authType - type of authorization.
-     * @returns {void}
-     */
-	onAuth(userName, authType)
-	{
-		let msg = `User: '${userName}'.\n\tAuthType: '${authType}' \n\tAuth checked: 'true'`;
-
-		console.log("\t" + msg);
-
-		if (this.isLog) this._logWrite('Info', msg, 'onSessionCreated');
-	}
-
-	/**
-     * User Added in group event...
-     * @param {String} userName - connected user name.
-     * @param {String} groupName - name of group.
-     * @returns {void}
-     */
-	onUserAddedInGroup(userName, groupName)
-	{
-		let msg = `User: ${userName}, add on: '${groupName}'.`;
-
-		console.log("\t" + msg);
-
-		if (this.isLog) this._logWrite('Info', msg, 'onUserAddedInGroup');
-	}
-
-	/**
-     * User Remove from group event...
-     * @param {String} userName - connected user name.
-     * @param {String} groupName - name of group.
-     * @returns {void}
-     */
-	onUserRemovedFromGroup(userName, groupName)
-	{
-		let msg = `User: ${userName}, remove from '${groupName}'.`;
-
-		console.log("\t" + msg);
-
-		if (this.isLog) this._logWrite('Info', msg, 'onUserRemovedFromGroup');
-	}
-
-	/**
-     * User Created event...
-     * @param {String} userName - user name.
-     * @returns {void}
-     */
-	onUserCreated(userName)
-	{
-		let msg = `User: ${userName}, was created!`;
-
-		console.log("\t" + msg);
-
-		if (this.isLog) this._logWrite('Info', msg, 'onUserCreated');
-	}
-
-	/**
-     * User removed event...
-     * @param {String} userName - user name.
-     * @returns {void}
-     */
-	onUserDeleted(userName)
-	{
-		let msg = `User: ${userName}, was deleted!`;
-
-		console.log("\t" + msg);
-
-		if (this.isLog) this._logWrite('Info', msg, 'onUserDeleted');
-	}
-
-	/**
-     * Write.log, print information, ...
-     * @param {Number} typeID - Index of InnerError in this.errors.
-     * @param {Number} msgID - Index of Message(to print) in this.errors['messages'].
-     * @returns {void}
-     */
-	onError(typeID, msgID)
-	{
-		let erType = this.errors[typeID],
-			title  = erType.type,
-			msg    = String.formatViaArray(erType['messages'][msgID], Array.from(arguments).slice(2,));
-
-		if (this.isLog) this._logWrite('Error', msg, title);
-		if (erType.critical.indexOf(msgID) !== -1) throw new Error(msg);
-	}
-
-
-	/**
-     * Critical Core error(without exeption).
-     * @param {String} msg - Message for print(+log write).
-     * @returns {Error}
-     */
-	onCoreError(msg)
-	{
-		if (this.isLog) this._logWrite('Error', msg, 'Critical Error.');
-		throw new Error(msg);
+		return `\n${line}\nEvent:\n\t${this.title}\nDescription:\n\t${this.description}\n${line}\n`;
 	}
 }
 
@@ -317,22 +313,19 @@ class _Response
 /**
  * Class for use universaL requests methods.
  * @class
- * @exetends EventsHandler
  */
-class _Request extends EventsHandler
+class _Request
 {
 
 	/**
      * Generate Basic parameters.
      * @param {object} parameters - Connection parameters.
-     * @param {Array.<InnerError>} ClientErrors - Array of client module special errors.
      * @returns {void}
      */
-	constructor(parameters, ClientErrors)
+	constructor(parameters)
 	{
-		super(ClientErrors, parameters.log);
-
-		this.http    = require(parameters.protocol || "http");
+		this.logger  = new _Logger(parameters.log);
+		this.http    = require(parameters.protocol ? parameters.protocol:"https");
 		this.baseUrl = this.generateBaseUrl(parameters);
 		this.prefix  = (parameters.prefix) ? `/${parameters.prefix}`:"";
 		this.options = Object.filter({
@@ -340,10 +333,7 @@ class _Request extends EventsHandler
 			host:     parameters.host,
 			hostname: parameters.hostname,
 			headers:  parameters.headers
-			//, protocol:  parameters.protocol
 		}, function(a) {return a != undefined});
-
-		this.options.agent = new (this.http.Agent)({ keepAlive: true });
 	}
 
 	/**
@@ -364,14 +354,9 @@ class _Request extends EventsHandler
 	 * @param {String} hostname - server host name.
 	 * @returns {String}
 	 */
-	generateBasicUrlByHostname(protocol, hostname, postfix)
+	generateBasicUrlByHostname(protocol, hostname)
 	{
-		if (!postfix)
-		{
-			return `${protocol}://${hostname}`;
-		} else {
-			return `${protocol}://${hostname}/${postfix}`;
-		}
+		return `${protocol}://${hostname}`;
 	}
 
 	/**
@@ -381,17 +366,18 @@ class _Request extends EventsHandler
 	 */
 	generateBaseUrl(parameters)
 	{
-		this.onServerConnection(parameters);
+		let url;
 
 		if (parameters['hostname'])
 		{
-			return this.generateBasicUrlByHostname(parameters['protocol'] || "http", parameters['hostname'], parameters['postfix']);
+			url = this.generateBasicUrlByHostname(parameters['protocol'], parameters['hostname']);
+		} else if (parameters['host'] && parameters["port"]) {
+			url = this.generateBasicUrlByHostAndPort(parameters['protocol'], parameters['host'], parameters['port']);
+		} else {
+			this.logger(new CoreEvent('Error', 'Critical Error', 'Please, check your host address parameters.')); // throw
 		}
 
-		if (parameters['host'])
-		{
-			return this.generateBasicUrlByHostAndPort(parameters['protocol'] || "http", parameters['host'], parameters['port']);
-		}
+		return url;
 	}
 
  	/**
@@ -403,15 +389,17 @@ class _Request extends EventsHandler
  	{
 		this.connectDefaultAttrsOnRequest(options);
 		
-		return new Promise(async resolve => 
+		return new Promise(resolve => 
 		{
-			let req = await this.http.request(options, async response => 
+			let req = this.http.request(options, response => 
 			{
-				let data = await this.responseParser(response);
-
-				resolve(data);
-			}); 
-			console.log(options)
+				
+				this.responseParser(response).then(res => 
+				{
+					resolve(res);
+				});
+			});
+			
 			req.end();
 		});
  	}
@@ -504,15 +492,21 @@ class _Request extends EventsHandler
      */
     async request(options, method="GET")
  	{
- 		let resp;
+		let resp;
 		 
  		options.method = (options.method || method).toUpperCase();
- 		options.path   = (this.prefix  + options.path.replace(/^[\/\/]|^.\//g, "")).trim();
+ 		options.path   = this.prefix + "/" + options.path.replace(/^[\/\/]|^.\//g, "");
 		resp           = await this[options.method](options);
 
-		if (!resp) return this.onCoreError(`Server: '${this.baseUrl}', not available...`);
-
-		return new Promise(resolve => resolve(resp));
+		return new Promise(resolve => 
+		{
+			if (!resp) 
+			{
+				this.logger.append(new CoreEvent('Error', 'Critical Error', `Server: '${this.baseUrl}', not available...`));
+			} else {
+				resolve(resp);
+			}
+		});
  	}
 
 	/**
@@ -528,9 +522,7 @@ class _Request extends EventsHandler
 		{
 			try{
 				parsed = JSON.parse(Array._toString(data));
-			} catch(e) {console.warn(`Can't parse data from Response.\n\t \
-									  Error: \n\t\t${e} \n\t\t \
-									  Data:\n\t\t${Array._toString(data)}`)}
+			} catch(e) {console.warn(`Can't parse data from Response.\n\tError: \n\t\t${e}`)}
 		}
 
 		return parsed;
@@ -540,7 +532,7 @@ class _Request extends EventsHandler
      * Parse response from server and convert to _Response(return in self.activeResponse);
      * @returns {void}
      */
- 	responseParser (response)
+ 	responseParser(response)
  	{
  		let errors = [],
 			data   = [];
@@ -564,5 +556,5 @@ module.exports =
 {
 	'_Request': _Request,
 	'_Response': _Response,
-	'InnerError': InnerError
+	'CoreEvent': CoreEvent
 }
