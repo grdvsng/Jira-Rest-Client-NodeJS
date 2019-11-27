@@ -55,7 +55,6 @@ function ADTableConnection([string]$selector, [string]$sqlCondition)
 }
 
 
-
 if ($args[0])
 { 
     [string]$query = $args[0];
