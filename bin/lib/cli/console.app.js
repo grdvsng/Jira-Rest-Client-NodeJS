@@ -119,6 +119,15 @@ class UserInputParser
 	
 		return { method: command, argv: argv };
 	}
+
+	getCliData(_type='text', prompt='$cli_jira> ')
+	{
+		let pid  = require('child_process').spawn(`py`, [ `${__dirname}/cli.py`, _type ], {stdio: [0, 1, 2]});
+		
+		process.stdout.write(prompt);
+
+		return new Promise(resolve => pid.on('close', code => resolve(this.readStdout(_type !== 'text'))));
+	}
 }
 
 
@@ -136,10 +145,9 @@ class RestClientCLI extends UserInputParser
 	{
 		if (this.client.supported)
 		{
-			for (let k in this.client.supported)
-			{
-				this.supported[k] = this.client.supported[k];
-			}
+			this.client.supported.exit = this.supported.exit;
+			this.client.supported.help = this.supported.help;
+			this.supported             = this.client.supported;
 		}
 	}
 
@@ -152,24 +160,25 @@ class RestClientCLI extends UserInputParser
 		
 		return new Promise (async (resolve) => 
 		{
-			auth.data.username = (auth.data.username) ? auth.data.username:await this.getCliData("text", "username > ");
-			auth.data.password = (auth.data.password) ? auth.data.password:await this.getCliData("pass", "password > ");	
 
 			this.client = await this.setClient();
-
-			resolve();
+			
+			this.mergeSupported();
+			resolve(true);
 		});
 	}
 
 	async setClient()
 	{
-		let cls = (this.config.client) ? require(this.config.client)["JiraClient"]:require("../../JiraClient")["JiraClient"];
+		let cls = (this.config.client) ? require(os_path.resolve(this.config.client))["JiraClient"]:require("../../JiraClient")["JiraClient"];
 
 		delete this.config.client;
 
 		let client = new cls(this.config);
 		
-		await client.run();	
+		await client.run();
+
+		return client;
 	}
 
 	getMethodHelp(method)
@@ -209,7 +218,10 @@ class RestClientCLI extends UserInputParser
 
 	isClientSupprotMethod(methodName)
 	{
-		return typeof this.client[methodName]  === "function";
+		if (typeof (this.client[methodName] || this.client[methodName.match(/[\w]+(?=_)/gi)[0]])  === "function")
+		{
+			return true;
+		}
 	}
 
 	async callClientMethod(methodName, args)
@@ -218,8 +230,8 @@ class RestClientCLI extends UserInputParser
 		
 		if (supported)
 		{
-			return await this.client.apply(this.client, args);
-		} else { 
+			return await this.client._methods_parser(methodName, args);
+		} else {
 			throw `Method '${methodName}' is not supported in client.` 
 		}
 	}
@@ -234,15 +246,6 @@ class RestClientCLI extends UserInputParser
 		} else { 
 			return await this.callClientMethod(methodParams.method.name, methodParams.argv); 
 		}
-	}
-
-	getCliData(_type='text', prompt='$cli_jira> ')
-	{
-		let pid  = require('child_process').spawn(`py`, [ `${__dirname}/cli.py`, _type ], {stdio: [0, 1, 2]});
-		
-		process.stdout.write(prompt);
-
-		return new Promise(resolve => pid.on('close', code => resolve(this.readStdout(_type !== 'text'))));
 	}
 
 	readStdout(encode=false)
@@ -274,5 +277,6 @@ class RestClientCLI extends UserInputParser
 
 module.exports =
 {
-	'RestClientCLI': RestClientCLI
+	'RestClientCLI': RestClientCLI,
+	'UserInputParser': UserInputParser
 }

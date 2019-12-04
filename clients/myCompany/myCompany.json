@@ -1,0 +1,12 @@
+{
+    "getUser_JiraDevUser": 
+    {
+        "client": "jiradev",
+        "less": "gujd", 
+        "help": "gujd(\n\t[-un] - userName\n)",
+        "argv": 
+        {
+            "require": ["-un"]
+        }
+    }
+}

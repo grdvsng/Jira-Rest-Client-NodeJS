@@ -330,8 +330,8 @@ class JiraClient extends _Request
             {
                 path: `/rest/api/2/user/?` + querystring.stringify({username: userName}),
             },
-            resp = await this._request(options, "get", false);
-
+            resp = await this._request(options, "get");
+            
         return resp;
     }
 

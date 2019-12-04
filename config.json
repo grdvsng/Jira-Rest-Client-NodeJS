@@ -1,15 +1,23 @@
 [{
-	"log":      "./logs/default-client-windows.js",
-    "hostname": "theminor.atlassian.net",
-    "protocol": "https",
-
-    "auth":
-    {
-        "type": "basic",
-        "data":
+    "client":   "./clients/myCompany/myCompany.js",
+    "connections":
+    [{
+        "title":    "jiradev",
+        "params": 
         {
-            "username": "cvbn12120@gmail.com",
-            "password": ""
+            "log":      "./logs/default-client-windows.js",
+            "hostname": "theminor.atlassian.net",
+            "protocol": "https",
+
+            "auth":
+            {
+                "type": "basic",
+                "data":
+                {
+                    "username": "cvbn12120@gmail.com",
+                    "password": ""
+                }
+            }
         }
-    }
+    }]
 }]

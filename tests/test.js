@@ -102,7 +102,7 @@ let tests =
 	new Test('search',              ["project = TEST And resolution = Unresolved", 0, 50]),
 	new Test('getIssue',            ['TEST-1']),
 	new Test('createUser',          [{"displayName":  "John Travolta", "name": "scientology666", "emailAddress": "travolta@gmail.com"}]),
-	new Test('getUser',             ["travolta@gmail.com"]),
+	new Test('getUser',             ["scientology666"]),
 	new Test('getProjectRoles',     ["TEST"]),
 	new Test('getRoleId',           ["Administrator", "TEST"]),
 	new Test('addUserInProject',    ["scientology666", "TEST", "Administrator"]),
