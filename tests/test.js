@@ -37,13 +37,7 @@ class UnitTester
      */
 	constructor(basicClass)
 	{
-		try
-		{
-			this.testClass = new basicClass(...Array.from(arguments).slice(1,));
-		} catch (e) {
-			console.warn(`Can't create exemplar of ${basicClass.className}.\nError: `);
-			throw e;
-		}
+		this.testClass = new basicClass(...Array.from(arguments).slice(1,));
 	}
 
 	/**
@@ -102,46 +96,24 @@ class UnitTester
 	}
 }
 
-let params =
-{
-	"log":      "./test.log",
-	"host":     "127.0.0.1",
-	"port":     "8080",
-	"protocol": "http",
-
-	"headers":
-	{
-		"Content-Type": "application/json"
-	},
-};
-
-let auth =
-{
-	type: 'basic',
-	data:
-	{
-		username: 'admin',
-		password: 'c1v2b3n4'
-	}
-};
-
 let tests =
 [
 	new Test('_request',            [{path: "rest/api/2/search", data: {jql: "",startAt: 0, maxResults: 50}}]),
-	new Test('search',              ["project = Test And resolution = Unresolved", 0, 50]),
-	new Test('getIssue',            ['Test-1']),
-	new Test('createUser',          [{"displayName":  "John Travolta", "name": "scientology666", "applicationKeys": []}]),
-	new Test('getUser',             ["scientology666"]),
-	new Test('getProjectRoles',     ["Test"]),
-	new Test('getRoleId',           ["Administrator", "Test"]),
-	new Test('addUserInProject',    ["scientology666", "Test", "Administrator"]),
-	new Test('addUserInGroup',      ["scientology666", "jira-software-users"]),
-	new Test('removeUserFromGroup', ["scientology666", "jira-software-users"]),
-	new Test('generateBasicAuth',   ["project = Test And resolution = Unresolved", 0, 50]),
-	new Test('createSession',       ["project = Test And resolution = Unresolved", 0, 50]),
+	new Test('search',              ["project = TEST And resolution = Unresolved", 0, 50]),
+	new Test('getIssue',            ['TEST-1']),
+	new Test('createUser',          [{"displayName":  "John Travolta", "name": "scientology666", "emailAddress": "travolta@gmail.com"}]),
+	new Test('getUser',             ["travolta@gmail.com"]),
+	new Test('getProjectRoles',     ["TEST"]),
+	new Test('getRoleId',           ["Administrator", "TEST"]),
+	new Test('addUserInProject',    ["scientology666", "TEST", "Administrator"]),
+	new Test('addUserInGroup',      ["scientology666", "homo_erectus"]),
+	new Test('removeUserFromGroup', ["scientology666", "homo_erectus"]),
 	new Test('deleteUser',          ["scientology666"])
 ];
 
 
-let TESTER = new UnitTester(require('../bin/JiraClient')['JiraClient'], params, auth);
+let cfg    = require('../config.json')[0]
+cfg.log    = undefined;
+let TESTER = new UnitTester(require("../bin/JiraClient")["JiraClient"], require('../config.json')[0]);
+
 TESTER.runTests(tests);

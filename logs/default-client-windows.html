@@ -1,0 +1,124 @@
+
+			<html>
+				<head>
+					<title>default-client-windows</title>
+					<script src="./default-client-windows.js"></script>
+					<script> function HTML_LOG()
+{
+	var self = this;
+
+	this.__init__ = function()
+	{
+		window.onload = this.onload;
+	}
+
+	this.generateTable = function()
+	{
+		var table = document.createElement('table');
+
+		table.style["border-collapse"] = "separate";
+		table.style["border-spacing"]  = "0px";
+
+		return table;
+	}
+
+	this.generateCell = function(value, clsName, cellEl)
+	{
+		var td = document.createElement(cellEl || 'td');
+			
+		td.innerHTML         = value;
+		td.className         = clsName;
+		td.style.border      = "1px solid black";
+		td.style.padding     = "5px";
+
+		return td;
+	}
+
+	this.generateRow = function(data, rowEl, cellEl)
+	{
+
+		var row = document.createElement(rowEl || "tr");
+
+		for (var key in data)
+		{
+			var td = this.generateCell(data[key], key, cellEl);
+
+			row.appendChild(td);
+		}
+
+		return row;
+	}
+	
+	this.generateHead = function(data)
+	{
+		var head = {},
+			row;
+
+		for (var key in data) head[key] = key.toUpperCase();
+	
+		row                  = this.generateRow(head, 'thead', 'th');
+		row.style.background = "orange";
+		row.className        = "table-head";
+
+		return row;
+	}
+
+	this.generateFilter = function()
+	{
+		return `
+		<input 
+			style="border: none"
+			onkeyup="
+			var childs = document.getElementsByClassName(this.parentNode.className);
+
+			for (var n=0; n < childs.length; n++)
+			{
+				var node = childs[n];
+			
+				if (!node.innerHTML.match(new RegExp(this.value, 'gi')) && node !== this.parentNode && node.parentNode.className !== 'table-head')
+				{
+					node.parentNode.style.display = 'none';
+				} else {
+					node.parentNode.style.display = 'table-row';
+				}
+			}
+			"
+		>
+		`
+	}
+
+	this.generateFilters = function(data)
+	{
+		var head = {},
+			row;
+
+		for (var key in data) head[key] = this.generateFilter();
+	
+		row = this.generateRow(head);
+
+		return row;
+	}
+
+	this.onload = function()
+	{
+		var tbl = generateTable();
+
+		for (var n=0; n < TABLE.length; n++)
+		{
+			var row = this.generateRow(TABLE[n]);
+			
+			if (n === 0) 
+			{
+				tbl.appendChild(this.generateHead(TABLE[n]));
+				tbl.appendChild(this.generateFilters(TABLE[n]));
+			}
+
+			tbl.appendChild(row);
+		}
+
+		document.body.appendChild(tbl);
+	}
+
+	return this.__init__();
+}; HTML_LOG() </script>
+		

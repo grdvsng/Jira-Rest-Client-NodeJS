@@ -178,6 +178,7 @@ class _Logger
 	{
 		this.table = [];
 		this.log   = logPath;
+		this.fso   = require('fs');
 		
 		if (this.log)
 		{
@@ -209,17 +210,25 @@ class _Logger
 		}
 	}
 
+	createLogSrc()
+	{
+		if (!this.fso.existsSync(os_path.dirname(this.log)))
+		{
+			this.fso.mkdirSync(os_path.dirname(this.log));
+		}
+
+		this.fso.open(this.log, 'w', (err, data) => {});
+		this.rewright();
+	}
+
 	generateLogFile()
 	{
-		this.fso = require('fs');
-
-		if (!this.fso.existsSync(this.log))
-		{ 
-			this.fso.open(this.log, 'w', (err, data) => {});
-			this.rewright();
+		if (!this.fso.existsSync(this.log)) 
+		{
+			this.createLogSrc();
 		}
-		
-		this.table = require(this.log)["TABLE"];
+
+		this.table = require(os_path.resolve(this.log))["TABLE"];
 	}
 
 	rewright()
@@ -246,6 +255,8 @@ class _Logger
      */
 	append(ev)
 	{
+		ev = (ev instanceof CoreEvent) ? ev:new CoreEvent(...arguments);
+
 		this.table.push(ev.toNode());
 
 		if (this.log) this.rewright();

@@ -1,0 +1,3 @@
+var TABLE = [{"type":"Info","title":"Authorization","description":"Successful authorization!","user":"pama","time":"2019-12-04T00:54:04.877Z"},{"type":"Info","title":"Authorization","description":"Successful authorization!","user":"pama","time":"2019-12-04T00:56:40.768Z"},{"type":"Info","title":"Authorization","description":"Successful authorization!","user":"pama","time":"2019-12-04T01:01:37.616Z"}]; 
+
+module.exports ={"TABLE": TABLE}

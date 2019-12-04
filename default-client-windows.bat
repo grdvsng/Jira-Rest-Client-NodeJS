@@ -1,9 +1,8 @@
 @echo off
 title JiraCLI
 
-set "cli_path=%cd%\bin\lib\cli\console.app.js"
 
-node %cli_path% 0
+node "%cd%\__main__.js" 0
 
 echo Continue...
 pause > nul

@@ -171,16 +171,25 @@ class JiraClient extends _Request
         super(parameters);
         
         this.setBasicHeaders(this.options);
+
         this.auth = parameters.auth;
+        this.run  = this.run(parameters);
 
         this.setBasicHeaders(this.options);
         this.platformLimitations();
-        
-        this.tryConnect(this.setBasicHeaders(parameters)).then(() => 
-        {
-            this.logger.append(new CoreEvent('Info', 'Authorization', `Successful authorization!`));
-        });
     }
+    
+    run(parameters)
+    {
+        return async () =>
+        {
+            let resp = await this.tryConnect(this.setBasicHeaders(parameters));
+
+            this.logger.append(new CoreEvent('Info', 'Authorization', `Successful authorization!`));
+            
+            return resp;
+        }
+    } 
 
     setBasicHeaders(parameters)
     {
@@ -256,11 +265,9 @@ class JiraClient extends _Request
         if (userData.name) 
         {
             return await this.createUser(userData);
+        } else {
+            this.logger.append('Info', 'User not imported from AD', `User:'${userName}' not found.`);
         }
-        
-        console.log(`User '${userName}' not found.`);
-        
-        return false;
     }
 
     /**
@@ -275,11 +282,19 @@ class JiraClient extends _Request
         options['path'] = '/rest/api/2/user';
         options['data'] = userData;
 
-        if (!userData['name'] && !userData['emailAddress']) return this.onWarning(3, 0, 'userData, emailAddress');
+        if (!userData['name'] || !userData['emailAddress'])
+        {
+            this.logger.append('Waring', 'User not created', `name and emailAddress is require parameters.`);
+        } else {
+            let resp = await this._request(options, "post", false);
 
-        let resp = await this._request(options, "post", false);
+            if (resp)
+            {
+                this.logger.append('Info', 'User created', `\nUser:\n\t'${userData.name}`);
 
-        return resp;
+                return true;
+            }
+        }
     }
 
     /**
@@ -296,7 +311,12 @@ class JiraClient extends _Request
 
         let resp = await this._request(options, "DELETE", false);
 
-        return resp;
+        if (resp)
+        {
+            this.logger.append(new CoreEvent('Info', 'User removed', `\nUser:\n\t'${userName}'`));
+
+            return resp;
+        }
     }
 
     /**
@@ -326,8 +346,8 @@ class JiraClient extends _Request
             {
                 path: `/rest/api/2/project/${querystring.escape(projectKey)}/role`
             },
-            resp = await this._request(options, "GET", false);
-
+            resp = await this._request(options, "GET");
+        
         return resp;
     }
 
@@ -339,17 +359,19 @@ class JiraClient extends _Request
      */
     async getRoleId(roleKey, projectKey) 
     {
-        if (typeof roleKey === 'number') return roleKey;
-
-        let projectRoles = await this.getProjectRoles(projectKey),
-            id = projectRoles.data[roleKey].match(/[0-9]+(?!\/)$/g)[0];
-
-        if (1 > id.length) 
+        let projectRoles = await this.getProjectRoles(projectKey);
+        
+        if (projectRoles)
         {
-            this.onError(3, 3, roleKey, projectKey);
-            return false;
+            let id = projectRoles.data[roleKey] ? projectRoles.data[roleKey].match(/[0-9]+(?!\/)$/g)[0]:0;
+
+            if (1 > id.length) 
+            {
+               this.logger.append('Warning', 'Role id not found', new CoreEvent(`Role: '${roleKey}' not found in Project: '${projectKey}'.`));
+            } else { return id; }
+            
         } else {
-            return id;
+            this.logger.append('Warning', 'Project not found', new CoreEvent(`Project: '${projectKey}' not found.`));
         }
     }
 
@@ -363,22 +385,25 @@ class JiraClient extends _Request
     {
         let roleID = await this.getRoleId(rolename, projectKey);
 
-        if (!roleID) return this.onError(3, 3, rolename, projectKey);
+        if (roleID)
+        {
+            let options = 
+                {
+                    path: `/rest/api/2/project/${querystring.escape(projectKey)}/role/${querystring.escape(roleID)}`,
+                    data: 
+                    {
+                        "user": (typeof userNameOrArrayWithNames === 'string') ? [userNameOrArrayWithNames] : userNameOrArrayWithNames,
+                    }
+                },
+                resp = await this._request(options, "POST", false);
 
-        let options = 
+            if (resp)
             {
-            path: `/rest/api/2/project/${querystring.escape(projectKey)}/role/${querystring.escape(roleID)}`,
-            data: 
-            {
-                "user": (typeof userNameOrArrayWithNames === 'string') ? [userNameOrArrayWithNames] : userNameOrArrayWithNames,
+                this.logger.append(new CoreEvent('Info', 'User pushed in project', `\nUser:\n\t'${userNameOrArrayWithNames}'\nproject:\n\t'${projectKey}'\nRole:'${rolename}'`));
+            
+                return resp;
             }
-        };
-
-        let resp = await this._request(options, "POST", false);
-
-        if (resp) console.log(resp) //this.onUserAddedInProject(userName);
-
-        return resp;
+        }
     }
 
     /**
@@ -399,7 +424,12 @@ class JiraClient extends _Request
             },
             resp = await this._request(options, "post", false);
 
-        return resp;
+        if (resp)
+        {
+            this.logger.append(new CoreEvent('Info', 'User pushed in group', `\nUser:\n\t'${userName}'\nGroup:\n\t'${groupName}'`));
+        
+            return resp;
+        }
     }
 
     /**
@@ -416,23 +446,26 @@ class JiraClient extends _Request
             },
             resp = await this._request(options, "DELETE", false);
 
-        return resp;
+        if (resp)
+        {
+            this.logger.append(new CoreEvent('Info', 'User removed from group', `\nUser:\n\t'${userName}'\nGroup:\n\t'${groupName}'`));
+        
+            return resp;
+        }
     }
 
-    handleResponse(response, onError)
+    handleResponse(response)
     {
         let fineState = [200, 201, 204];
 
         if (fineState.indexOf(response.status) === -1)
         {
-            this.onWarning(3, 2, `\n{\n\tResponse: ${response.status}\n\tDescription:` + JSON.stringify(response));
-            return false;
-
-        } else if (response.errors) {
-            this.onError(2, 1, JSON.stringify(response.errors));
+            return this.logger.append(new CoreEvent('Warning', "Bad response", `\nResponse:\n\t'${JSON.stringify(response.errors)}';\nstatus:\n\t'${response.status}'.`));
+        } else if (response.errors.errors || response.errors.errorMessages) {
+            return this.logger.append(new CoreEvent('Warning',  "Response with errors", `Errors data: ${JSON.stringify(response.errors.errorMessages)}`));     
         }
 
-        return new Promise((resolve) => resolve(response));
+        return response;
     }
 
     /**
@@ -442,16 +475,11 @@ class JiraClient extends _Request
      * @param {(Function | Boolean)} [onError=false] - function will calling if server return error.
      * @returns {(_Response | Boolean)}
      */
-    async _request(options, method="get", onError=false)
+    async _request(options, method="get")
     {
-        let response  = await this.request(options, method);
+        let response = await this.request(options, method);
 
-        if (response)
-        {
-            return this.handleResponse(response, onError);
-        } else {
-            return this.onError(2, 0, this.options.host || this.options.hostname);
-        }
+        return this.handleResponse(response);
     }
 
     /**
